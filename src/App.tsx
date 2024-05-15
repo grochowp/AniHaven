@@ -1,35 +1,70 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import GlobalStyle from "./globalStyles";
+import { ThemeProvider } from "styled-components";
+import { MainPage } from "./pages/MainPage/MainPage";
+import { News } from "./pages/News/News";
+import { Animals } from "./pages/Animals/Animals";
+import { Adoption } from "./pages/Adoption/Adoption";
+import { Contact } from "./pages/Contact/Contact";
+import { Error } from "./components/Error";
+import { Navbar } from "./components/Navbar";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Theme {
+  mainBackground: string;
+  secondaryBackground: string;
+  shadow: string;
+  mainText: string;
+  secondaryTest: string;
+  gold: string;
+  name: string;
 }
 
-export default App
+const LightTheme: Theme = {
+  mainBackground: "#FFFFFF",
+  secondaryBackground: "#F3F3F3",
+  shadow: "#ADACAC",
+  mainText: "#212121",
+  secondaryTest: "#D9D9D9",
+  gold: "#BABE00",
+  name: "light",
+};
+
+const DarkTheme: Theme = {
+  mainBackground: "#262626",
+  secondaryBackground: "#171717",
+  shadow: "#333333",
+  mainText: "#D9D9D9",
+  secondaryTest: "#D9D9D9",
+  gold: "#BABE00",
+  name: "dark",
+};
+
+const themes: Record<string, Theme> = {
+  light: LightTheme,
+  dark: DarkTheme,
+};
+
+function App() {
+  const [theme] = useState("dark");
+
+  return (
+    <ThemeProvider theme={themes[theme]}>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="*" element={<Error />} />
+          <Route index element={<MainPage />} />
+          <Route path="news" element={<News />} />
+          <Route path="animals" element={<Animals />} />
+          <Route path="adoption" element={<Adoption />} />
+          <Route path="contact" element={<Contact />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+}
+
+export default App;
