@@ -18,6 +18,8 @@ interface Theme {
   mainText: string;
   secondaryTest: string;
   gold: string;
+  gradientBackground: string;
+  gradientBackgroundSec: string;
   name: string;
 }
 
@@ -28,6 +30,9 @@ const LightTheme: Theme = {
   mainText: "#212121",
   secondaryTest: "#D9D9D9",
   gold: "#BABE00",
+  gradientBackground: "rgb(255,255,255)",
+  gradientBackgroundSec:
+    "linear-gradient(0deg, rgba(255, 255, 255, 1) 0%,rgba(153, 153, 153, 1) 100%)",
   name: "light",
 };
 
@@ -38,6 +43,9 @@ const DarkTheme: Theme = {
   mainText: "#D9D9D9",
   secondaryTest: "#D9D9D9",
   gold: "#BABE00",
+  gradientBackground: "rgb(34,34,34)",
+  gradientBackgroundSec:
+    "linear-gradient(0deg, rgba(34,34,34,1) 0%, rgba(52,52,52,1) 100%)",
   name: "dark",
 };
 

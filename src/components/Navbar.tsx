@@ -31,7 +31,7 @@ export const Navbar = () => {
           <img
             className={`${"en" === i18n.language && "selected"}`}
             onClick={() => changeLanguage("en")}
-            src="/public/images/ukFlag.png"
+            src="/images/ukFlag.png"
             alt="UK flag"
           />
         </div>
@@ -45,12 +45,13 @@ const Container = styled.header`
   height: 5rem;
   width: 100vw;
   max-width: 1920px;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font: 400 normal 1rem "Inika", sans-serif;
   color: ${(props) => props.theme.mainText};
-
+  z-index: 3;
   .navbar-left {
     display: flex;
     align-items: center;
