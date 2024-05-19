@@ -31,8 +31,7 @@ const LightTheme: Theme = {
   secondaryText: "#D9D9D9",
   gold: "#BABE00",
   gradientBackground: "rgb(255,255,255)",
-  gradientBackgroundSec:
-    "linear-gradient(0deg, #FFFFFF 0%,rgba(153, 153, 153, 1) 100%)",
+  gradientBackgroundSec: "linear-gradient(0deg, #FFFFFF 0%,#ADACAC 100%)",
   name: "light",
 };
 

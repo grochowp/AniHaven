@@ -11,6 +11,8 @@ i18n
     resources: {
       en: {
         translation: {
+          error: "Whoops! Something`s went wrong!",
+          errorButton: "Go back",
           intro: "Rescuing Lives!",
           newsButton: "News",
           animalButton: "Animals",
@@ -28,6 +30,8 @@ i18n
       },
       pl: {
         translation: {
+          error: "Upss! Coś poszło nie tak!",
+          errorButton: "Wróć",
           intro: "Ratujemy Życia!",
           newsButton: "Nowości",
           animalButton: "Zwierzęta",

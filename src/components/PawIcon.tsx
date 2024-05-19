@@ -21,7 +21,7 @@ const Container = styled.div`
     width: 150px;
     content: url(${(props) =>
       props.theme.name === "dark"
-        ? "/images/pawWhite2.png"
+        ? "/images/pawWhite.png"
         : "/images/pawBlack.png"});
   }
 

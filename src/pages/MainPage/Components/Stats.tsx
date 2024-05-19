@@ -3,7 +3,7 @@ import { PawIcon } from "../../../components/PawIcon";
 import { useTranslation } from "react-i18next";
 import { IoIosPaw } from "react-icons/io";
 import { FaHeartbeat } from "react-icons/fa";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
 export const Stats = () => {
   const { t } = useTranslation();
@@ -12,21 +12,21 @@ export const Stats = () => {
       <PawIcon text={t("shelterNumbers")} />
       <article>
         <div className="stat">
-          <IoIosPaw />
+          <IoIosPaw style={{ color: "#D96675" }} />
           <h2>125</h2>
           <p>{t("shelterNumbersWaiting")}</p>
         </div>
         <div className="stat">
           <FaHeartbeat style={{ color: "red" }} />
 
-          <h2>125</h2>
-          <p>{t("shelterNumbersFound")}</p>
+          <h2>521</h2>
+          <p>{t("shelterNumbersRescued")}</p>
         </div>
         <div className="stat">
-          <FaPlusCircle style={{ color: "green" }} />
+          <FaHome style={{ color: "#006400" }} />
 
-          <h2>125</h2>
-          <p>{t("shelterNumbersRescued")}</p>
+          <h2>311</h2>
+          <p>{t("shelterNumbersFound")}</p>
         </div>
       </article>
     </Content>
