@@ -11,6 +11,7 @@ i18n
     resources: {
       en: {
         translation: {
+          intro: "Rescuing Lives!",
           newsButton: "News",
           animalButton: "Animals",
           adoptionButton: "About adoption",
@@ -18,10 +19,16 @@ i18n
           dogsButton: "Dogs",
           catsButton: "Cats",
           otherAnimalsButton: "Other animals",
+          shelterNumbers: "Shelter by the numbers",
+          shelterNumbersWaiting: "Waiting for You",
+          shelterNumbersFound: "Found home",
+          shelterNumbersRescued: "Rescued",
+          recentlyFound: "Recently found",
         },
       },
       pl: {
         translation: {
+          intro: "Ratujemy Życia!",
           newsButton: "Nowości",
           animalButton: "Zwierzęta",
           adoptionButton: "O adopcji",
@@ -29,6 +36,11 @@ i18n
           dogsButton: "Psy",
           catsButton: "Koty",
           otherAnimalsButton: "Inne zwierzęta",
+          shelterNumbers: "Schronisko w liczbach",
+          shelterNumbersWaiting: "Czeka na Ciebie",
+          shelterNumbersFound: "Odnalazło dom",
+          shelterNumbersRescued: "Uratowanych",
+          recentlyFound: "Niedawno odnalezione",
         },
       },
     },

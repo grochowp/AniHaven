@@ -1,8 +1,10 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { GiSittingDog } from "react-icons/gi";
+import { FaCat } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { PiBirdFill } from "react-icons/pi";
+import { IoIosInformationCircle } from "react-icons/io";
 
 export const Cards = () => {
   const { t } = useTranslation();
@@ -11,7 +13,7 @@ export const Cards = () => {
     <Content>
       <section className="Title">
         <h1>
-          <strong>AniHaven</strong> Rescuing Lives!
+          <strong>AniHaven</strong> {t("intro")}
         </h1>
       </section>
       <section className="Buttons">
@@ -20,15 +22,15 @@ export const Cards = () => {
           <h2>{t("dogsButton")}</h2>
         </div>
         <div onClick={() => navigate("/")}>
-          <GiSittingDog />
+          <FaCat />
           <h2>{t("catsButton")}</h2>
         </div>
         <div onClick={() => navigate("/")}>
-          <GiSittingDog />
+          <PiBirdFill />
           <h2>{t("otherAnimalsButton")}</h2>
         </div>
         <div onClick={() => navigate("/adoption")}>
-          <GiSittingDog />
+          <IoIosInformationCircle />
           <h2>{t("adoptionButton")}</h2>
         </div>
       </section>
@@ -47,7 +49,6 @@ const Content = styled.div`
   .Title {
     padding-left: clamp(1rem, 7vw, 9rem);
     color: ${(props) => props.theme.secondaryText};
-    font: 400 normal 0 "Inder", sans-serif;
 
     strong {
       font-size: clamp(2.25rem, 5vw, 5rem);

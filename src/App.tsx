@@ -32,7 +32,7 @@ const LightTheme: Theme = {
   gold: "#BABE00",
   gradientBackground: "rgb(255,255,255)",
   gradientBackgroundSec:
-    "linear-gradient(0deg, rgba(255, 255, 255, 1) 0%,rgba(153, 153, 153, 1) 100%)",
+    "linear-gradient(0deg, #FFFFFF 0%,rgba(153, 153, 153, 1) 100%)",
   name: "light",
 };
 
@@ -45,7 +45,7 @@ const DarkTheme: Theme = {
   gold: "#BABE00",
   gradientBackground: "rgb(34,34,34)",
   gradientBackgroundSec:
-    "linear-gradient(0deg, rgba(34,34,34,1) 0%, rgba(52,52,52,1) 100%)",
+    "linear-gradient(0deg, #262626 0%, rgba(30,30,30,1) 50%)",
   name: "dark",
 };
 
@@ -55,13 +55,13 @@ const themes: Record<string, Theme> = {
 };
 
 function App() {
-  const [theme] = useState("dark");
+  const [theme, setTheme] = useState("dark");
 
   return (
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyle />
       <BrowserRouter>
-        <Navbar />
+        <Navbar theme={theme} setTheme={setTheme} />
         <Routes>
           <Route path="*" element={<Error />} />
           <Route index element={<MainPage />} />

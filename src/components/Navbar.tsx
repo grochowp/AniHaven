@@ -3,7 +3,12 @@ import { BiSolidDog } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-export const Navbar = () => {
+interface iThemes {
+  setTheme: (theme: string) => void;
+  theme: string;
+}
+
+export const Navbar: React.FC<iThemes> = ({ theme, setTheme }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const changeLanguage = (lang: string) => {
@@ -35,12 +40,27 @@ export const Navbar = () => {
             alt="UK flag"
           />
         </div>
+
+        <div className="lang">
+          <img
+            className={`${theme === "light" && "selected"}`}
+            onClick={() => setTheme("light")}
+            src="/images/sun.png"
+            alt="sun icon"
+          />
+          <img
+            className={`${theme === "dark" && "selected"}`}
+            onClick={() => setTheme("dark")}
+            src="/images/moon.png"
+            alt="moon icon"
+          />
+        </div>
       </div>
     </Container>
   );
 };
 
-const Container = styled.header`
+const Container = styled.nav`
   background-color: ${(props) => props.theme.secondaryBackground};
   height: 5rem;
   width: 100vw;
@@ -52,6 +72,8 @@ const Container = styled.header`
   font: 400 normal 1rem "Inika", sans-serif;
   color: ${(props) => props.theme.mainText};
   z-index: 3;
+  transition: 1s;
+
   .navbar-left {
     display: flex;
     align-items: center;
@@ -83,6 +105,8 @@ const Container = styled.header`
       height: max-content;
       width: max-content;
       border-radius: 10rem;
+      transition: 1s;
+
       img {
         cursor: pointer;
         height: 2rem;
