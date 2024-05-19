@@ -16,7 +16,7 @@ interface Theme {
   secondaryBackground: string;
   shadow: string;
   mainText: string;
-  secondaryTest: string;
+  secondaryText: string;
   gold: string;
   gradientBackground: string;
   gradientBackgroundSec: string;
@@ -28,7 +28,7 @@ const LightTheme: Theme = {
   secondaryBackground: "#F3F3F3",
   shadow: "#ADACAC",
   mainText: "#212121",
-  secondaryTest: "#D9D9D9",
+  secondaryText: "#D9D9D9",
   gold: "#BABE00",
   gradientBackground: "rgb(255,255,255)",
   gradientBackgroundSec:
@@ -41,7 +41,7 @@ const DarkTheme: Theme = {
   secondaryBackground: "#171717",
   shadow: "#333333",
   mainText: "#D9D9D9",
-  secondaryTest: "#D9D9D9",
+  secondaryText: "#D9D9D9",
   gold: "#BABE00",
   gradientBackground: "rgb(34,34,34)",
   gradientBackgroundSec:

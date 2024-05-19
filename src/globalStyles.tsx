@@ -1,6 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+html {
+    width: 100vw;
+}
 
 body {
     display: flex;
@@ -22,13 +25,13 @@ body {
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.color};
+    background-color: ${(props) => props.theme.mainBackground};
     border-radius: 6px;
   }
   
   ::-webkit-scrollbar-track {
     margin: 0 3rem;
-    background-color: ${(props) => props.theme.pageBackground};
+    background-color: ${(props) => props.theme.secondaryBackground};
   }
 
 `;
