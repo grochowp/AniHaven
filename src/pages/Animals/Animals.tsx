@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const Animals = () => {
+const Animals = () => {
   return <Container>Animals</Container>;
 };
+
+export default Animals;
 const Container = styled.article`
   display: flex;
   justify-content: center;

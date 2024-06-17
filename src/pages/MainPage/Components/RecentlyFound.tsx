@@ -11,7 +11,7 @@ export const RecentlyFound = () => {
 
       <article>
         <div className="left">
-          <img src="/images/cat0.png" />
+          <img src="/images/cat0.png" alt="animal image" />
           <Link to="/">
             <button>See more</button>
           </Link>
@@ -31,7 +31,7 @@ export const RecentlyFound = () => {
           </div>
           <div>
             <h1>{t("about")}</h1>
-            <h3>
+            <h2 className="description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
               vulputate ornare justo fringilla interdum. Donec augue neque,
               auctor vitae hendrerit maximus, pellentesque nec dolor. Phasellus
@@ -42,7 +42,7 @@ export const RecentlyFound = () => {
               maximus pulvinar, eros dui pharetra metus, non semper libero erat
               vel leo. Sed tempus est est, sit amet egestas justo pellentesque
               at.
-            </h3>
+            </h2>
           </div>
           <Link to="/">
             <button>See more</button>
@@ -61,6 +61,8 @@ const Content = styled.section`
   background-color: ${(props) => props.theme.mainBackground};
   transition: 1.5s;
   padding: 5rem 0 2.5rem 0;
+  width: 100vw;
+  max-width: 1920px;
 
   article {
     display: flex;
@@ -75,7 +77,7 @@ const Content = styled.section`
       justify-content: center;
       flex-direction: column;
       gap: 3rem;
-
+      transition: 1s;
       button {
         width: 10rem;
         height: 3rem;
@@ -86,7 +88,7 @@ const Content = styled.section`
         font-size: 1.25rem;
         box-shadow: 10px 5px 5px ${(props) => props.theme.shadow};
         cursor: pointer;
-
+        transition: 1s;
         &:hover {
           transform: scale(0.95);
         }
@@ -125,7 +127,7 @@ const Content = styled.section`
         gap: clamp(2.5rem, 5vw, 5rem);
         display: flex;
         color: ${(props) => props.theme.mainText};
-
+        transition: 1s;
         h1 {
           display: flex;
           justify-content: flex-end;
@@ -142,7 +144,7 @@ const Content = styled.section`
           transform: translateY(5px);
         }
 
-        h3 {
+        .description {
           width: clamp(10rem, 30vw, 30rem);
           font: 300 normal clamp(0.75rem, 1vw, 1rem) "Karla", "sans-serif";
           margin: 0;
@@ -159,6 +161,9 @@ const Content = styled.section`
     align-items: center;
     width: 100vw;
     gap: 2rem;
+    width: 100vw;
+    max-width: 1920px;
+    transition: 1s;
 
     button {
       width: 4rem;

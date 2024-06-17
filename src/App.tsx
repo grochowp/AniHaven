@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import GlobalStyle from "./globalStyles";
 import { ThemeProvider } from "styled-components";
-import { MainPage } from "./pages/MainPage/MainPage";
-import { News } from "./pages/News/News";
-import { Animals } from "./pages/Animals/Animals";
-import { Adoption } from "./pages/Adoption/Adoption";
-import { Contact } from "./pages/Contact/Contact";
-import { Error } from "./components/Error";
-import { Navbar } from "./components/Navbar";
+// import MainPage from "./pages/MainPage/MainPage";
+
+import Navbar from "./components/Navbar";
+import { Spinner } from "./components/Spinner";
+
+const Error = lazy(() => import("./components/Error"));
+const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
+const News = lazy(() => import("./pages/News/News"));
+const Animals = lazy(() => import("./pages/Animals/Animals"));
+const Adoption = lazy(() => import("./pages/Adoption/Adoption"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
 
 interface Theme {
   mainBackground: string;
@@ -61,14 +65,16 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Navbar theme={theme} setTheme={setTheme} />
-        <Routes>
-          <Route path="*" element={<Error />} />
-          <Route index element={<MainPage />} />
-          <Route path="news" element={<News />} />
-          <Route path="animals" element={<Animals />} />
-          <Route path="adoption" element={<Adoption />} />
-          <Route path="contact" element={<Contact />} />
-        </Routes>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path="*" element={<Error />} />
+            <Route index element={<MainPage />} />
+            <Route path="news" element={<News />} />
+            <Route path="animals" element={<Animals />} />
+            <Route path="adoption" element={<Adoption />} />
+            <Route path="contact" element={<Contact />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </ThemeProvider>
   );

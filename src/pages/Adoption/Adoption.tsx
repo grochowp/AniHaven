@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const Adoption = () => {
+const Adoption = () => {
   return <Container>Adoption</Container>;
 };
 
+export default Adoption;
 const Container = styled.article`
   display: flex;
   justify-content: center;

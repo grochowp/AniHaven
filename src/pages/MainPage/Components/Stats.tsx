@@ -40,7 +40,8 @@ const Content = styled.section`
   justify-content: center;
   align-items: center;
   transition: 1s;
-
+  width: 100vw;
+  max-width: 1920px;
   article {
     display: flex;
     flex-direction: row;

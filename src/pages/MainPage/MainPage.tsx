@@ -3,7 +3,7 @@ import { Cards } from "./Components/Cards";
 import { Stats } from "./Components/Stats";
 import { RecentlyFound } from "./Components/RecentlyFound";
 
-export const MainPage = () => {
+const MainPage = () => {
   return (
     <>
       <ImageContainer>
@@ -16,6 +16,7 @@ export const MainPage = () => {
   );
 };
 
+export default MainPage;
 const ImageContainer = styled.section`
   position: relative;
   display: flex;

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Error = () => {
+const Error = () => {
   const { t } = useTranslation();
 
   return (
@@ -14,6 +14,8 @@ export const Error = () => {
     </Container>
   );
 };
+
+export default Error;
 
 const Container = styled.article`
   display: flex;

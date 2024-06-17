@@ -8,7 +8,7 @@ interface iThemes {
   theme: string;
 }
 
-export const Navbar: React.FC<iThemes> = ({ theme, setTheme }) => {
+const Navbar: React.FC<iThemes> = ({ theme, setTheme }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const changeLanguage = (lang: string) => {
@@ -30,7 +30,7 @@ export const Navbar: React.FC<iThemes> = ({ theme, setTheme }) => {
           <img
             className={`${"pl" === i18n.language && "selected"}`}
             onClick={() => changeLanguage("pl")}
-            src="/public/images/polishFlag.png"
+            src="/images/polishFlag.png"
             alt="polish flag"
           />
           <img
@@ -59,6 +59,8 @@ export const Navbar: React.FC<iThemes> = ({ theme, setTheme }) => {
     </Container>
   );
 };
+
+export default Navbar;
 
 const Container = styled.nav`
   background-color: ${(props) => props.theme.secondaryBackground};

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PawIcon = ({ text }: { text: string }) => {
   return (
-    <Container>
+    <Container className={text} onClick={() => 0}>
       <img alt="paw logo" />
       <h1>{text}</h1>
     </Container>

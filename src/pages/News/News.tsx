@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const News = () => {
+const News = () => {
   return <Container>News</Container>;
 };
+
+export default News;
 
 const Container = styled.article`
   display: flex;

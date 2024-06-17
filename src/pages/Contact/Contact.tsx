@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const Contact = () => {
+const Contact = () => {
   return <Container>Contact</Container>;
 };
+
+export default Contact;
 const Container = styled.article`
   display: flex;
   justify-content: center;
