@@ -30,7 +30,7 @@ interface Theme {
 const LightTheme: Theme = {
   mainBackground: "#FFFFFF",
   secondaryBackground: "#F3F3F3",
-  shadow: "#ADACAC",
+  shadow: "#D4D9DB",
   mainText: "#212121",
   secondaryText: "#D9D9D9",
   gold: "#BABE00",

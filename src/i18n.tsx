@@ -30,6 +30,7 @@ i18n
           age: "Age",
           sex: "Sex",
           about: "About",
+          behaviouristCorner: "Behaviourist`s corner",
         },
       },
       pl: {
@@ -52,7 +53,8 @@ i18n
           name: "Imię",
           age: "Wiek",
           sex: "Płeć",
-          about: "O zwierzęciu",
+          about: "Opis",
+          behaviouristCorner: "Kącik behawiorysty",
         },
       },
     },

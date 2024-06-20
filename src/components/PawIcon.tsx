@@ -1,8 +1,15 @@
 import styled from "styled-components";
 
-export const PawIcon = ({ text }: { text: string }) => {
+export const PawIcon = ({
+  text,
+  special,
+}: {
+  text: string;
+  special?: string;
+}) => {
+  console.log(special);
   return (
-    <Container className={text} onClick={() => 0}>
+    <Container className={special} onClick={() => 0}>
       <img alt="paw logo" />
       <h1>{text}</h1>
     </Container>
@@ -26,7 +33,17 @@ const Container = styled.div`
   }
 
   h1 {
-    margin: 1rem 0;
+    margin: 0.5rem 0 1rem 0;
     font: 400 normal clamp(1.5rem, 2vw, 2rem) "Inder", sans-serif;
+  }
+
+  &.gold {
+    h1 {
+      color: ${(props) => props.theme.gold};
+    }
+
+    img {
+      content: url("/images/pawGold.png");
+    }
   }
 `;

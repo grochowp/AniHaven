@@ -10,13 +10,13 @@ export const RecentlyFound = () => {
       <PawIcon text={t("recentlyFound")} />
 
       <article>
-        <div className="left">
+        <div className="image">
           <img src="/images/cat0.png" alt="animal image" />
           <Link to="/">
             <button>See more</button>
           </Link>
         </div>
-        <div className="right">
+        <div className="informations">
           <div>
             <h1>{t("name")}</h1>
             <h2>Żarówka</h2>
@@ -61,8 +61,6 @@ const Content = styled.section`
   background-color: ${(props) => props.theme.mainBackground};
   transition: 1.5s;
   padding: 5rem 0 2.5rem 0;
-  width: 100vw;
-  max-width: 1920px;
 
   article {
     display: flex;
@@ -71,13 +69,14 @@ const Content = styled.section`
     flex-wrap: wrap;
     justify-content: center;
 
-    .left {
+    .image {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       gap: 3rem;
       transition: 1s;
+
       button {
         width: 10rem;
         height: 3rem;
@@ -89,6 +88,7 @@ const Content = styled.section`
         box-shadow: 10px 5px 5px ${(props) => props.theme.shadow};
         cursor: pointer;
         transition: 1s;
+
         &:hover {
           transform: scale(0.95);
         }
@@ -105,7 +105,7 @@ const Content = styled.section`
       }
     }
 
-    .right {
+    .informations {
       display: flex;
       flex-direction: column;
       width: max-content;
@@ -128,13 +128,14 @@ const Content = styled.section`
         display: flex;
         color: ${(props) => props.theme.mainText};
         transition: 1s;
+
         h1 {
           display: flex;
           justify-content: flex-end;
           width: clamp(5rem, 12vw, 12rem);
 
           height: 5rem;
-          font: 400 normal clamp(1.5rem, 2vw, 2rem) "Inika";
+          font: 400 normal clamp(1.25rem, 2vw, 2rem) "Inika";
           margin: 0;
         }
 
@@ -151,6 +152,10 @@ const Content = styled.section`
           transform: translateY(10px);
           flex-wrap: wrap;
         }
+      }
+
+      @media (max-width: 770px) {
+        // width: 60vw;
       }
     }
   }
@@ -174,7 +179,7 @@ const Content = styled.section`
       border: 1px solid ${(props) => props.theme.mainText};
       color: ${(props) => props.theme.mainText};
       cursor: pointer;
-
+      transition: 1s;
       &:hover {
         transform: scale(0.95);
       }

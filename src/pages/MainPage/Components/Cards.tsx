@@ -11,12 +11,12 @@ export const Cards = () => {
   const navigate = useNavigate();
   return (
     <Content>
-      <section className="Title">
+      <section className="title">
         <h1>
           <strong>AniHaven</strong> {t("intro")}
         </h1>
       </section>
-      <section className="Buttons">
+      <section className="buttons">
         <div onClick={() => navigate("/")}>
           <GiSittingDog />
           <h2>{t("dogsButton")}</h2>
@@ -46,10 +46,10 @@ const Content = styled.div`
   max-width: 1920px;
   padding-bottom: 3rem;
 
-  .Title {
+  .title {
     padding-left: clamp(1rem, 7vw, 9rem);
     color: ${(props) => props.theme.secondaryText};
-
+    margin-bottom: 1rem;
     strong {
       font-size: clamp(2.25rem, 5vw, 5rem);
       margin-right: 1rem;
@@ -60,7 +60,7 @@ const Content = styled.div`
     }
   }
 
-  .Buttons {
+  .buttons {
     display: flex;
     flex-direction: rows;
     justify-content: space-around;

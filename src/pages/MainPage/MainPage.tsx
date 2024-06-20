@@ -2,21 +2,31 @@ import styled from "styled-components";
 import { Cards } from "./Components/Cards";
 import { Stats } from "./Components/Stats";
 import { RecentlyFound } from "./Components/RecentlyFound";
+import { BehaviouristCorner } from "./Components/BehaviouristCorner";
+import show from "../../styles/show";
 
 const MainPage = () => {
   return (
-    <>
+    <Container>
       <ImageContainer>
         <BackgroundImage />
         <Cards />
       </ImageContainer>
       <Stats />
       <RecentlyFound />
-    </>
+      <BehaviouristCorner />
+    </Container>
   );
 };
 
 export default MainPage;
+
+const Container = styled.main`
+  animation: ${show} 2.5s;
+  width: 100vw;
+  max-width: 1920px;
+`;
+
 const ImageContainer = styled.section`
   position: relative;
   display: flex;
@@ -42,4 +52,8 @@ const BackgroundImage = styled.div`
   background-size: cover;
   background-position: center;
   z-index: -1;
+
+  @media (max-width: 1000px) {
+    background-position: -300px;
+  }
 `;
