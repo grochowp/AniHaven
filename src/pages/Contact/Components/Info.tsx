@@ -42,7 +42,7 @@ const Container = styled.div`
   gap: 1rem;
 
   .card {
-    flex: 1 0 7.5rem;
+    flex: 1 1 7.5rem;
     border-radius: 10px;
     transform: translateY(20px);
     display: flex;
@@ -53,6 +53,7 @@ const Container = styled.div`
     text-align: center;
     color: ${(props) => props.theme.mainText};
     transition: 1s;
+    box-shadow: 5px 5px 5px ${(props) => props.theme.shadow};
 
     svg {
       transform: translateY(15px);

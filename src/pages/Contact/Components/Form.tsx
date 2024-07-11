@@ -49,7 +49,7 @@ export const Form = () => {
               pattern: /^\d{9}$/,
             })}
           />
-          <span>{t("phoneNumber")}</span>
+          <span>{t("phoneNumberDigits")}</span>
         </div>
         <div className="inputBox">
           <textarea
@@ -88,6 +88,7 @@ const FormContainer = styled.form`
 
   .inputBox input,
   .inputBox textarea {
+    // box-shadow: inset 0 0 20px ${(props) => props.theme.shadow};
     width: 70%;
     height: 2.5rem;
     padding: 10px;
@@ -142,7 +143,7 @@ const FormContainer = styled.form`
     transform: translate(10px, -7px);
     font-size: 0.9rem;
     padding: 0 10px;
-    background: ${(props) => props.theme.shadow};
+    background: ${(props) => props.theme.mainBackground};
     border-left: 2px solid ${(props) => props.theme.formBorder};
     border-right: 2px solid ${(props) => props.theme.formBorder};
     letter-spacing: 0.2em;

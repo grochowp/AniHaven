@@ -27,6 +27,7 @@ const Container = styled.article`
   height: calc(100vh - 5rem);
   max-height: 1080px;
   padding-top: 5rem;
+  background-color: ${(props) => props.theme.mainBackground};
 
   .left-side {
     width: 50%;
