@@ -31,6 +31,7 @@ i18n
           sex: "Sex",
           about: "About",
           behaviouristCorner: "Behaviourist`s corner",
+          mapInfo: "Here you can find us!",
         },
       },
       pl: {
@@ -55,6 +56,7 @@ i18n
           sex: "Płeć",
           about: "Opis",
           behaviouristCorner: "Kącik behawiorysty",
+          mapInfo: "Tu nas znajdziesz!",
         },
       },
     },
