@@ -31,7 +31,6 @@ export const Info = () => {
 
 const Container = styled.div`
   width: 75%;
-
   height: 30%;
   display: flex;
   align-items: center;
@@ -39,7 +38,7 @@ const Container = styled.div`
   flex-wrap: wrap;
 
   .card {
-    width: 30%;
+    width: 25%;
     height: 90%;
     border-radius: 10px;
     transform: translateY(20px);

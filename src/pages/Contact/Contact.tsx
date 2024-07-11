@@ -28,7 +28,7 @@ const Container = styled.article`
 
   .left-side {
     // background-color: red;
-    width: 50%;
+    width: 60%;
 
     min-width: 320px;
     display: flex;
@@ -37,7 +37,7 @@ const Container = styled.article`
   }
 
   .right-side {
-    width: 50%;
+    width: 40%;
     min-width: 320px;
     // background-color: blue;
   }

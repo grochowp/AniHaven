@@ -7,7 +7,6 @@ export const PawIcon = ({
   text: string;
   special?: string;
 }) => {
-  console.log(special);
   return (
     <Container className={special} onClick={() => 0}>
       <img alt="paw logo" />
