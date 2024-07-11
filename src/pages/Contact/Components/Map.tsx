@@ -26,7 +26,7 @@ export const Map = () => {
 };
 
 const Container = styled.div`
-  height: 70%;
+  flex: 1 1 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -35,6 +35,8 @@ const Container = styled.div`
 
 const StyledMapContainer = styled(MapContainer)`
   border-radius: 10px;
-  height: 85%;
+  height: 75%;
+  max-height: 500px;
   width: 75%;
+  z-index: 1;
 `;

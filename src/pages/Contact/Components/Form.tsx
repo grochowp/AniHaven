@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { FormModal } from "./FormModal";
 
 interface FormInputs {
   fullName: string;
@@ -9,39 +11,60 @@ interface FormInputs {
 }
 
 export const Form = () => {
-  const { register, handleSubmit } = useForm<FormInputs>();
+  const [isFormSubmitted, setIsFormSubmitted] = useState<boolean>(false);
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
+  const { register, handleSubmit, reset } = useForm<FormInputs>();
+  const { t } = useTranslation();
+
+  const handleModal = (value: boolean) => {
+    setIsFormSubmitted(value);
+  };
+
+  const onSubmit: SubmitHandler<FormInputs> = (data) => {
+    handleModal(true);
+    console.log(data); // TO-DO: add feature to send email whenever user use this function
+    reset();
+    setTimeout(() => {
+      handleModal(false);
+    }, 3000);
+  };
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)}>
-      <div className="inputBox">
-        <input
-          type="text"
-          required
-          defaultValue="test"
-          {...register("fullName", { required: true })}
-        />
-        <span>Full name</span>
-      </div>
-      <div className="inputBox">
-        <input
-          type="text"
-          required
-          {...register("phoneNumber", { required: true })}
-        />
-        <span>Phone Number</span>
-      </div>
-      <div className="inputBox">
-        <textarea
-          className="message"
-          required
-          {...register("message", { required: true })}
-        />
-        <span>Message</span>
-      </div>
-      <input type="submit" />
-    </FormContainer>
+    <>
+      <FormContainer onSubmit={handleSubmit(onSubmit)}>
+        <div className="inputBox">
+          <input
+            type="text"
+            required
+            {...register("fullName", { required: true })}
+          />
+          <span>{t("fullName")}</span>
+        </div>
+        <div className="inputBox">
+          <input
+            type="text"
+            required
+            {...register("phoneNumber", {
+              required: true,
+              pattern: /^\d{9}$/,
+            })}
+          />
+          <span>{t("phoneNumber")}</span>
+        </div>
+        <div className="inputBox">
+          <textarea
+            className="message"
+            required
+            {...register("message", { required: true })}
+          />
+          <span>{t("message")}</span>
+        </div>
+
+        <input type="submit" value={t("send")} />
+      </FormContainer>
+
+      {isFormSubmitted && <FormModal handleModal={handleModal} />}
+    </>
   );
 };
 
@@ -52,10 +75,10 @@ const FormContainer = styled.form`
   align-items: center;
   height: 100%;
   gap: 2rem;
-
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
+  padding-bottom: 1rem;
 
   .inputBox {
     position: relative;
@@ -89,15 +112,16 @@ const FormContainer = styled.form`
   input[type="submit"] {
     width: 30%;
     height: 3rem;
-    transform: translateX(95px);
     background-color: ${(props) => props.theme.secondaryBackground};
     color: ${(props) => props.theme.mainText};
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    transform: translateX(clamp(80px, 52.5%, 95px));
+    font-size: 1.25rem;
 
     &:hover {
-      transform: scale(0.95) translateX(100px);
+      transform: scale(0.95) translateX(clamp(80px, 50.5%, 100px));
     }
   }
 
@@ -114,13 +138,13 @@ const FormContainer = styled.form`
   .inputBox input:focus ~ span,
   .inputBox textarea:valid ~ span,
   .inputBox textarea:focus ~ span {
-    color: #00dfc4;
+    color: ${(props) => props.theme.formBorder};
     transform: translate(10px, -7px);
     font-size: 0.9rem;
     padding: 0 10px;
     background: ${(props) => props.theme.shadow};
-    border-left: 2px solid #00dfc4;
-    border-right: 2px solid #00dfc4;
+    border-left: 2px solid ${(props) => props.theme.formBorder};
+    border-right: 2px solid ${(props) => props.theme.formBorder};
     letter-spacing: 0.2em;
   }
 
@@ -128,6 +152,6 @@ const FormContainer = styled.form`
   .inputBox input:focus,
   .inputBox textarea:valid,
   .inputBox textarea:focus {
-    border: 2px solid #00dfc4;
+    border: 2px solid ${(props) => props.theme.formBorder};
   }
 `;

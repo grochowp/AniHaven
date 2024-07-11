@@ -4,13 +4,16 @@ import styled from "styled-components";
 import { CiMail } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
 import { BsTelephone } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 
 export const Info = () => {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <div className="card">
         <IoLocationOutline />
-        <h1>Location</h1>
+        <h1>{t("location")}</h1>
         <h2>
           Biała Podlaska <br /> Olszowa 4
         </h2>
@@ -22,7 +25,7 @@ export const Info = () => {
       </div>
       <div className="card">
         <BsTelephone />
-        <h1>Phone number</h1>
+        <h1>{t("phoneNumber")}</h1>
         <h2>+48 111 222 333</h2>
       </div>
     </Container>
@@ -31,15 +34,15 @@ export const Info = () => {
 
 const Container = styled.div`
   width: 75%;
-  height: 30%;
+  height: max-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 1rem;
 
   .card {
-    width: 25%;
-    height: 90%;
+    flex: 1 0 7.5rem;
     border-radius: 10px;
     transform: translateY(20px);
     display: flex;
@@ -52,19 +55,23 @@ const Container = styled.div`
     transition: 1s;
 
     svg {
-      transform: translateY(10px);
-      height: 40%;
+      transform: translateY(15px);
+      height: 3rem;
       width: 3rem;
+      margin-bottom: 5px;
     }
 
     h1 {
-      height: 20%;
+      height: 50px;
       font: 100 normal 1.25rem "Istok web", "sans-serif";
     }
 
     h2 {
-      height: 40%;
-      font: 100 normal 1.25rem "Istok web", "sans-serif";
+      height: 50px;
+      display: flex;
+      align-items: center;
+      font: 100 normal 1rem "Istok web", "sans-serif";
+      margin-top: 0;
     }
   }
 `;

@@ -24,6 +24,7 @@ interface Theme {
   gold: string;
   gradientBackground: string;
   gradientBackgroundSec: string;
+  formBorder: string;
   name: string;
 }
 
@@ -36,6 +37,7 @@ const LightTheme: Theme = {
   gold: "#BABE00",
   gradientBackground: "rgb(255,255,255)",
   gradientBackgroundSec: "linear-gradient(0deg, #FFFFFF 0%,#ADACAC 100%)",
+  formBorder: "#025D8C",
   name: "light",
 };
 
@@ -49,6 +51,7 @@ const DarkTheme: Theme = {
   gradientBackground: "rgb(34,34,34)",
   gradientBackgroundSec:
     "linear-gradient(0deg, #262626 0%, rgba(30,30,30,1) 50%)",
+  formBorder: "#00dfc4",
   name: "dark",
 };
 

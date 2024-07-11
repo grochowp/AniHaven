@@ -21,15 +21,15 @@ export default Contact;
 const Container = styled.article`
   display: flex;
   justify-content: center;
+  flex-direction: row;
   width: 100vw;
   max-width: 1920px;
-  min-height: calc(100vh - 5rem);
+  height: calc(100vh - 5rem);
+  max-height: 1080px;
   padding-top: 5rem;
 
   .left-side {
-    // background-color: red;
-    width: 60%;
-
+    width: 50%;
     min-width: 320px;
     display: flex;
     flex-direction: column;
@@ -39,6 +39,13 @@ const Container = styled.article`
   .right-side {
     width: 40%;
     min-width: 320px;
-    // background-color: blue;
+  }
+
+  @media (max-width: 828px) {
+    height: max-content;
+    max-height: max-content;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
   }
 `;
