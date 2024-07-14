@@ -39,5 +39,5 @@ const StyledMapContainer = styled(MapContainer)`
   max-height: 500px;
   width: 75%;
   z-index: 1;
-  box-shadow: 10px 10px 10px ${(props) => props.theme.shadow};
+  box-shadow: 3px 3px 15px ${(props) => props.theme.shadow};
 `;

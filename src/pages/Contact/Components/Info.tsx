@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { CiMail } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
 import { BsTelephone } from "react-icons/bs";
@@ -11,19 +11,19 @@ export const Info = () => {
 
   return (
     <Container>
-      <div className="card">
+      <div className="card" style={{ animationDelay: "0s" }}>
         <IoLocationOutline />
         <h1>{t("location")}</h1>
         <h2>
           Biała Podlaska <br /> Olszowa 4
         </h2>
       </div>
-      <div className="card">
+      <div className="card" style={{ animationDelay: "1s" }}>
         <CiMail />
         <h1>E-mail</h1>
         <h2>Haven@mail.com</h2>
       </div>
-      <div className="card">
+      <div className="card" style={{ animationDelay: "2s" }}>
         <BsTelephone />
         <h1>{t("phoneNumber")}</h1>
         <h2>+48 111 222 333</h2>
@@ -31,6 +31,24 @@ export const Info = () => {
     </Container>
   );
 };
+
+const jump = keyframes`
+  0% {
+      transform: translateY(50px);
+  }
+  25% {
+      transform: translateY(60px);
+  }
+  50% {
+      transform: translateY(50px);
+  }
+  75% {
+      transform: translateY(40px);
+  }
+  100% {
+      transform: translateY(50px);
+  }    
+`;
 
 const Container = styled.div`
   width: 75%;
@@ -44,7 +62,7 @@ const Container = styled.div`
   .card {
     flex: 1 1 7.5rem;
     border-radius: 10px;
-    transform: translateY(20px);
+    transform: translateY(50px);
     display: flex;
     background-color: ${(props) => props.theme.secondaryBackground};
     flex-direction: column;
@@ -53,7 +71,9 @@ const Container = styled.div`
     text-align: center;
     color: ${(props) => props.theme.mainText};
     transition: 1s;
-    box-shadow: 5px 5px 5px ${(props) => props.theme.shadow};
+    box-shadow: 7px 7px 7px ${(props) => props.theme.shadow},
+      -5px -5px 7px ${(props) => props.theme.secondaryBackground};
+    animation: ${jump} 5s linear infinite;
 
     svg {
       transform: translateY(15px);

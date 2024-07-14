@@ -5,7 +5,7 @@ import GlobalStyle from "./globalStyles";
 import { ThemeProvider } from "styled-components";
 // import MainPage from "./pages/MainPage/MainPage";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import { Spinner } from "./components/Spinner";
 
 const Error = lazy(() => import("./components/Error"));
