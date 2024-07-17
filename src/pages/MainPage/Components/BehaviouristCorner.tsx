@@ -13,30 +13,10 @@ export const BehaviouristCorner = () => {
           <div>
             <img src="/images/dogIcon.png" alt="dog logo" />
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            vulputate ornare justo fringilla interdum. Donec augue neque, auctor
-            vitae hendrerit maximus, pellentesque nec dolor. Phasellus feugiat
-            sollicitudin euismod. Maecenas sit amet fringilla nulla. Vivamus
-            pharetra dolor vel sodales posuere. Mauris at sapien aliquam,
-            dapibus turpis in, finibus erat. Curabitur sed velit tempor, laoreet
-            libero in, aliquam dui. Sed commodo, ipsum vitae maximus pulvinar,
-            eros dui pharetra metus, non semper libero erat vel leo. Sed tempus
-            est est, sit amet egestas justo pellentesque at.
-          </p>
+          <p>{t("dogTip1")}</p>
         </div>
         <div className="paragraph right-icon">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            vulputate ornare justo fringilla interdum. Donec augue neque, auctor
-            vitae hendrerit maximus, pellentesque nec dolor. Phasellus feugiat
-            sollicitudin euismod. Maecenas sit amet fringilla nulla. Vivamus
-            pharetra dolor vel sodales posuere. Mauris at sapien aliquam,
-            dapibus turpis in, finibus erat. Curabitur sed velit tempor, laoreet
-            libero in, aliquam dui. Sed commodo, ipsum vitae maximus pulvinar,
-            eros dui pharetra metus, non semper libero erat vel leo. Sed tempus
-            est est, sit amet egestas justo pellentesque at.
-          </p>
+          <p>{t("catTip1")}</p>
           <div>
             <img src="/images/catIcon.png" alt="cat logo" />
           </div>
@@ -45,30 +25,10 @@ export const BehaviouristCorner = () => {
           <div>
             <img src="/images/dogIcon.png" alt="dog logo" />
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            vulputate ornare justo fringilla interdum. Donec augue neque, auctor
-            vitae hendrerit maximus, pellentesque nec dolor. Phasellus feugiat
-            sollicitudin euismod. Maecenas sit amet fringilla nulla. Vivamus
-            pharetra dolor vel sodales posuere. Mauris at sapien aliquam,
-            dapibus turpis in, finibus erat. Curabitur sed velit tempor, laoreet
-            libero in, aliquam dui. Sed commodo, ipsum vitae maximus pulvinar,
-            eros dui pharetra metus, non semper libero erat vel leo. Sed tempus
-            est est, sit amet egestas justo pellentesque at.
-          </p>
+          <p>{t("dogTip2")}</p>
         </div>
         <div className="paragraph right-icon">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            vulputate ornare justo fringilla interdum. Donec augue neque, auctor
-            vitae hendrerit maximus, pellentesque nec dolor. Phasellus feugiat
-            sollicitudin euismod. Maecenas sit amet fringilla nulla. Vivamus
-            pharetra dolor vel sodales posuere. Mauris at sapien aliquam,
-            dapibus turpis in, finibus erat. Curabitur sed velit tempor, laoreet
-            libero in, aliquam dui. Sed commodo, ipsum vitae maximus pulvinar,
-            eros dui pharetra metus, non semper libero erat vel leo. Sed tempus
-            est est, sit amet egestas justo pellentesque at.
-          </p>
+          <p>{t("catTip2")}</p>
           <div>
             <img src="/images/catIcon.png" alt="cat logo" />
           </div>
@@ -83,6 +43,7 @@ const Content = styled.section`
   background-size: cover;
   background-position: center;
   height: max-content;
+  
 
   article {
     display: flex;
