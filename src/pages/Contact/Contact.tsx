@@ -24,7 +24,7 @@ const Container = styled.article`
   flex-direction: row;
   width: 100vw;
   max-width: 1920px;
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 8rem);
   max-height: 1080px;
   padding-top: 5rem;
   background-color: ${(props) => props.theme.mainBackground};

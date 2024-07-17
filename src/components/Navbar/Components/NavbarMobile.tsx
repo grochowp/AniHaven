@@ -127,6 +127,7 @@ const Navbar = styled.div<INavbar>`
       justify-content: flex-end;
 
       svg {
+        color: #d9d9d9;
         margin: 1.5rem 1rem 0 0;
         width: 2rem;
         height: 2rem;

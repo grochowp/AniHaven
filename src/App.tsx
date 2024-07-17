@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 
 import Navbar from "./components/Navbar/Navbar";
 import { Spinner } from "./components/Spinner";
+import Footer from "./components/Footer";
 
 const Error = lazy(() => import("./components/Error"));
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
@@ -78,6 +79,7 @@ function App() {
             <Route path="contact" element={<Contact />} />
           </Routes>
         </Suspense>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
