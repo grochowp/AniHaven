@@ -88,7 +88,7 @@ const FormContainer = styled.form`
 
   .inputBox input,
   .inputBox textarea {
-    // box-shadow: inset 0 0 20px ${(props) => props.theme.shadow};
+    box-shadow: 0 8px 32px 0 ${(props) => props.theme.shadow};
     width: 70%;
     height: 2.5rem;
     padding: 10px;
@@ -120,6 +120,9 @@ const FormContainer = styled.form`
     cursor: pointer;
     transform: translateX(clamp(80px, 52.5%, 95px));
     font-size: 1.25rem;
+    box-shadow: 0 8px 32px 0 ${(props) => props.theme.shadow};
+    border-radius: 10px;
+    border: 1px solid ${(props) => props.theme.shadow};
 
     &:hover {
       transform: scale(0.95) translateX(clamp(80px, 50.5%, 100px));

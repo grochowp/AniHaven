@@ -11,5 +11,5 @@ const Container = styled.article`
   justify-content: center;
   width: 100vw;
   max-width: 1920px;
-  min-height: 100vh;
+  min-height: calc(100vh - 3rem);
 `;

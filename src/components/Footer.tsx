@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
 export default Footer;
 
 const FooterBar = styled.footer`
-  background-color: ${(props) => props.theme.mainBackground};
+  background-color: ${(props) => props.theme.secondaryBackground};
   height: max-content;
   display: flex;
   justify-content: space-between;

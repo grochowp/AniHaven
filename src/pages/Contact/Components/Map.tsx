@@ -34,10 +34,11 @@ const Container = styled.div`
 `;
 
 const StyledMapContainer = styled(MapContainer)`
-  border-radius: 10px;
   height: 75%;
   max-height: 500px;
   width: 75%;
   z-index: 1;
-  box-shadow: 3px 3px 15px ${(props) => props.theme.shadow};
+  box-shadow: 0 8px 32px 0 ${(props) => props.theme.shadow};
+  border-radius: 10px;
+  border: 1px solid ${(props) => props.theme.shadow};
 `;

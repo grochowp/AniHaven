@@ -64,16 +64,16 @@ const Container = styled.div`
     border-radius: 10px;
     transform: translateY(50px);
     display: flex;
-    background-color: ${(props) => props.theme.secondaryBackground};
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-align: center;
     color: ${(props) => props.theme.mainText};
     transition: 1s;
-    box-shadow: 7px 7px 7px ${(props) => props.theme.shadow},
-      -5px -5px 7px ${(props) => props.theme.secondaryBackground};
-    animation: ${jump} 5s linear infinite;
+    box-shadow: 0 8px 32px 0 ${(props) => props.theme.shadow};
+    border-radius: 10px;
+    border: 1px solid ${(props) => props.theme.shadow};
+    animation: ${jump} 10s linear infinite;
 
     svg {
       transform: translateY(15px);
