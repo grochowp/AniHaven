@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -113,14 +113,14 @@ const FormContainer = styled.form`
   input[type="submit"] {
     width: 30%;
     height: 3rem;
-    background-color: ${(props) => props.theme.secondaryBackground};
+    background-color: transparent;
     color: ${(props) => props.theme.mainText};
     border-radius: 10px;
     border: none;
     cursor: pointer;
     transform: translateX(clamp(80px, 52.5%, 95px));
     font-size: 1.25rem;
-    box-shadow: 0 8px 32px 0 ${(props) => props.theme.shadow};
+    box-shadow: 0 8px 32px 3px ${(props) => props.theme.shadow};
     border-radius: 10px;
     border: 1px solid ${(props) => props.theme.shadow};
 
@@ -149,7 +149,7 @@ const FormContainer = styled.form`
     background: ${(props) => props.theme.mainBackground};
     border-left: 2px solid ${(props) => props.theme.formBorder};
     border-right: 2px solid ${(props) => props.theme.formBorder};
-    letter-spacing: 0.2em;
+    letter-spacing: 0.2rem;
   }
 
   .inputBox input:valid,

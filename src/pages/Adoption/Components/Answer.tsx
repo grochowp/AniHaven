@@ -93,7 +93,7 @@ const Buttons = styled.div`
     border-radius: 10px;
     font-size: 1.15rem;
     cursor: pointer;
-
+    box-shadow: 0 8px 32px 3px ${(props) => props.theme.shadow};
     &:hover {
       transform: scale(0.95);
     }

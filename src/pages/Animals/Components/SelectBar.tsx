@@ -139,7 +139,7 @@ export const SelectBar = () => {
             </div>
           </div>
         </Select>
-        {/* <button onClick={handleReset}>Reset</button> */}
+        <button onClick={handleReset}>Reset</button>
       </div>
     </Container>
   );
@@ -185,20 +185,32 @@ const Container = styled.div`
       bottom: 1rem;
       left: 1rem;
       cursor: pointer;
+
+      @media (max-width: 960px) {
+        display: none;
+      }
     }
   }
 
   @media (max-width: 960px) {
-    width: 100vw;
+    width: 70vw;
+    min-width: 310px;
     height: max-content;
     position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
     margin: -2rem 0 1rem 0;
-    left: 0;
+    // left: 0;
 
     .inside-container {
-      width: 90%;
+      width: 100%;
       gap: 0rem;
       left: 0;
+
+      &:last-child {
+        padding-bottom: 1rem;
+      }
     }
   }
 `;

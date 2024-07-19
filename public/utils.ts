@@ -7,7 +7,7 @@ export const animalData: Array<IAnimals> = [
     sex: "Female",
     descriptionENG: "A 3 year old playful cat who loves attention.",
     descriptionPL: "3-letni, zabawny kot, który uwielbia uwagę.",
-    imageLink: "/public/images/cat0.png",
+    imageLink: "/images/cat0.png",
   },
   {
     name: "Burek",
@@ -146,6 +146,53 @@ export const animalData: Array<IAnimals> = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt89nu5HcX65UCAUlQG6ZRP6UDiqelNSnTJg&usqp=CAU",
   },
 ];
+
+export const adoptionQuestions: Array<IFAQ> = [
+  {
+    questionENG: "",
+    answerENG: "",
+    questionPL: "Wypełnienie formularza zgłoszeniowego",
+    answerPL:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at dolor id nisi finibus sagittis molestie tincidunt nibh. Aenean mollis lorem ultricies, fringilla mauris sed, commodo ante. Proin malesuada, eros nec ultrices tincidunt, dolor augue interdum felis, non tincidunt augue mauris sit amet urna. Morbi nec aliquam lacus, non tincidunt purus. Duis sodales lobortis nunc vitae placerat. Integer urna sapien, rhoncus vitae neque vitae, fringilla euismod ante. Nullam vitae lobortis risus. Nullam eu sollicitudin orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sodales aliquam arcu aliquet congue. Nulla quis ante sodales, convallis urna non, iaculis leo. In commodo vel metus a vehicula.",
+  },
+  {
+    questionENG: "",
+    answerENG: "",
+    questionPL: "Konsultacja i wizyta w schronisku",
+    answerPL: "",
+  },
+  {
+    questionENG: "",
+    answerENG: "",
+    questionPL: "Spotkanie ze zwierzęciem",
+    answerPL: "",
+  },
+  {
+    questionENG: "",
+    answerENG: "",
+    questionPL: "Spotkanie ze zwierzęciem",
+    answerPL: "",
+  },
+  {
+    questionENG: "",
+    answerENG: "",
+    questionPL: "Podpisanie umowy adopcyjnej",
+    answerPL: "",
+  },
+  {
+    questionENG: "",
+    answerENG: "",
+    questionPL: "Odbiór zwierzęcia",
+    answerPL: "",
+  },
+];
+
+export interface IFAQ {
+  questionENG: string;
+  answerENG: string;
+  questionPL: string;
+  answerPL: string;
+}
 
 export interface IAnimals {
   name: string;

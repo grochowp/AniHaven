@@ -30,28 +30,28 @@ interface Theme {
 }
 
 const LightTheme: Theme = {
-  mainBackground: "#FFFFFF",
-  secondaryBackground: "#F3F3F3",
+  mainBackground: "#F0F0F0",
+  secondaryBackground: "#F9F9F9",
   shadow: "#D4D9DB",
   mainText: "#212121",
   secondaryText: "#D9D9D9",
   gold: "#BABE00",
   gradientBackground: "rgb(255,255,255)",
-  gradientBackgroundSec: "linear-gradient(0deg, #FFFFFF 0%,#ADACAC 100%)",
+  gradientBackgroundSec: "linear-gradient(0deg, #F0F0F0 0%,#ADADAC 100%)",
   formBorder: "#025D8C",
   name: "light",
 };
 
 const DarkTheme: Theme = {
-  mainBackground: "#262626",
+  mainBackground: "#1B1B1B",
   secondaryBackground: "#171717",
-  shadow: "#333333",
+  shadow: "#28282B",
   mainText: "#D9D9D9",
   secondaryText: "#D9D9D9",
   gold: "#BABE00",
   gradientBackground: "rgb(34,34,34)",
   gradientBackgroundSec:
-    "linear-gradient(0deg, #262626 0%, rgba(30,30,30,1) 50%)",
+    "linear-gradient(0deg, #1B1B1B 0%, rgba(30,30,30,1) 50%)",
   formBorder: "#00dfc4",
   name: "dark",
 };

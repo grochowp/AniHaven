@@ -1,5 +1,3 @@
-import React from "react";
-
 import styled, { keyframes } from "styled-components";
 import { CiMail } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";

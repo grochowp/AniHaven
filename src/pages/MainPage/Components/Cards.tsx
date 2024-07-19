@@ -68,8 +68,7 @@ const Content = styled.div`
     gap: 0.5rem;
 
     div {
-      box-shadow: 2px 2px 7px ${(props) => props.theme.shadow},
-        -2px -2px 7px ${(props) => props.theme.secondaryBackground};
+      box-shadow: 0 4px 16px 1px ${(props) => props.theme.shadow};
       display: flex;
       flex-direction: column;
       align-items: center;
