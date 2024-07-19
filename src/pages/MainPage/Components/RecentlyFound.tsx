@@ -3,17 +3,27 @@ import { PawIcon } from "../../../components/PawIcon";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
+import { useState } from "react";
+import { animalData } from "../../../../public/utils";
 
 export const RecentlyFound = () => {
-  const { t } = useTranslation();
+  const [selectedAnimalIndex, setSelectedAnimalIndex] = useState<number>(0);
+  const animal = animalData[selectedAnimalIndex];
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+  const handleChangeAnimal = (index: number) => {
+    if (index < 0 || index > animalData.length - 1) return;
+    setSelectedAnimalIndex(index);
+  };
   return (
     <Content>
       <PawIcon text={t("recentlyFound")} />
 
       <article className="contentContainer">
         <Image>
-          <img src="/images/cat0.png" alt="animal image" />
-          <Link to="/">
+          <img src={animal.imageLink} alt="animal image" />
+          <Link to="/contact">
             <button>
               Adopt <CiHeart />
             </button>
@@ -22,36 +32,33 @@ export const RecentlyFound = () => {
         <Informations>
           <div className="info">
             <h1>{t("name")}</h1>
-            <h2>Żarówka</h2>
+            <h2>{animal.name}</h2>
           </div>
           <div className="info">
             <h1>{t("age")}</h1>
-            <h2>3 yo</h2>
+            <h2>{animal.age}</h2>
           </div>
           <div className="info">
             <h1>{t("sex")}</h1>
-            <h2>3</h2>
+            <h2>{currentLanguage == "en" ? animal.sex : animal.sexPL}</h2>
           </div>
           <div className="info">
             <h1>{t("about")}</h1>
             <h2 className="description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              vulputate ornare justo fringilla interdum. Donec augue neque,
-              auctor vitae hendrerit maximus, pellentesque nec dolor. Phasellus
-              feugiat sollicitudin euismod. Maecenas sit amet fringilla nulla.
-              Vivamus pharetra dolor vel sodales posuere. Mauris at sapien
-              aliquam, dapibus turpis in, finibus erat. Curabitur sed velit
-              tempor, laoreet libero in, aliquam dui. Sed commodo, ipsum vitae
-              maximus pulvinar, eros dui pharetra metus, non semper libero erat
-              vel leo. Sed tempus est est, sit amet egestas justo pellentesque
-              at.
+              {currentLanguage == "en"
+                ? animal.longDescriptionENG
+                : animal.longDescriptionPL}
             </h2>
           </div>
         </Informations>
       </article>
       <Switch>
-        <button>{"<"}</button>
-        <button>{">"}</button>
+        <button onClick={() => handleChangeAnimal(selectedAnimalIndex - 1)}>
+          {"<"}
+        </button>
+        <button onClick={() => handleChangeAnimal(selectedAnimalIndex + 1)}>
+          {">"}
+        </button>
       </Switch>
     </Content>
   );
@@ -139,6 +146,7 @@ const Image = styled.div`
 
   img {
     width: clamp(20rem, 40vw, 40rem);
+    aspect-ratio: 24/15;
     border-radius: 1rem;
     box-shadow: 10px 10px 5px ${(props) => props.theme.shadow};
 
@@ -181,7 +189,10 @@ const Informations = styled.div`
     h2 {
       font: 400 normal clamp(1.35rem, 1.5vw, 1.5rem) "Inika";
       margin: 0;
-      transform: translateY(5px);
+      transform: translateY(7px);
+      @media (max-width: 770px) {
+        transform: translateY(0);
+      }
     }
 
     .description {
@@ -194,6 +205,6 @@ const Informations = styled.div`
   }
 
   @media (max-width: 770px) {
-    display: none;
+    // display: none;
   }
 `;
