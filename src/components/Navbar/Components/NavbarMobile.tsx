@@ -32,9 +32,9 @@ export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
           <Link className={pathname === "" ? "selected" : ""} to="/">
             AniHaven
           </Link>
-          <Link className={pathname === "news" ? "selected" : ""} to="/news">
+          {/* <Link className={pathname === "news" ? "selected" : ""} to="/news">
             {t("newsButton")}
-          </Link>
+          </Link>  TO-DO  */}
           <Link
             className={pathname === "animals" ? "selected" : ""}
             to="/animals"

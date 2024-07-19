@@ -14,9 +14,9 @@ export const NavbarRight: React.FC<iThemes> = ({ theme, setTheme }) => {
 
   return (
     <Navbar>
-      <Link className={pathname === "news" ? "selected" : ""} to="/news">
+      {/* <Link className={pathname === "news" ? "selected" : ""} to="/news">
         {t("newsButton")}
-      </Link>
+      </Link>  TO-DO   */}
       <Link className={pathname === "animals" ? "selected" : ""} to="/animals">
         {t("animalButton")}
       </Link>

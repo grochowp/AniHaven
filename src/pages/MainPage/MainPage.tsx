@@ -3,7 +3,7 @@ import { Cards } from "./Components/Cards";
 import { Stats } from "./Components/Stats";
 import { RecentlyFound } from "./Components/RecentlyFound";
 import { BehaviouristCorner } from "./Components/BehaviouristCorner";
-import show from "../../styles/show";
+import { show } from "../../animations/show";
 
 const MainPage = () => {
   return (
