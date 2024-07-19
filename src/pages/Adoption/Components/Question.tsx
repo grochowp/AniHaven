@@ -1,28 +1,102 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { IFAQ } from "../../../../public/utils";
 import { IoIosArrowForward } from "react-icons/io";
+import { useTranslation } from "react-i18next";
+import {
+  hideText,
+  showText,
+  slideDown,
+  slideUp,
+} from "../../../animations/questionsDisplay";
 
-export const Question = ({
-  question,
-  index,
-}: {
+interface IQuestion {
   question: IFAQ;
   index: number;
+  selectedQuestionIndex: number;
+  handleChangeQuestion: (index: number) => void;
+}
+
+export const Question: React.FC<IQuestion> = ({
+  question,
+  index,
+  selectedQuestionIndex: selectedIndex,
+  handleChangeQuestion,
 }) => {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
   return (
-    <FAQ>
-      <div>
-        <span>{index}</span>
-        <h1>{question.questionPL}</h1>
-      </div>
-      <button>
-        <IoIosArrowForward />
-      </button>
-    </FAQ>
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <FAQ
+        onClick={() => handleChangeQuestion(index)}
+        isSelected={index === selectedIndex}
+      >
+        <div>
+          <span>{index + 1}</span>
+          <h1>
+            {currentLanguage === "en"
+              ? question.questionENG
+              : question.questionPL}
+          </h1>
+        </div>
+        <button>
+          <IoIosArrowForward />
+        </button>
+      </FAQ>
+      <MobileAnswer isSelected={index === selectedIndex}>
+        <p>
+          {currentLanguage === "en" ? question.answerENG : question.answerPL}
+        </p>
+      </MobileAnswer>
+    </div>
   );
 };
 
-const FAQ = styled.li`
+interface IStyledFAQ {
+  isSelected: boolean;
+}
+
+const MobileAnswer = styled.div<IStyledFAQ>`
+  background: ${(props) => props.theme.secondaryBackground};
+  align-items: center;
+  z-index: 0;
+  overflow: hidden;
+  max-height: ${(props) => (props.isSelected ? "1000px" : "0")};
+  opacity: ${(props) => (props.isSelected ? "1" : "0")};
+  visibility: ${(props) => (props.isSelected ? "visible" : "hidden")};
+  border-radius: 0 0 10px 10px;
+  transition: max-height 2s ease-in-out, opacity 2s ease-in-out, visibility 2s;
+  animation: ${(props) =>
+    props.isSelected
+      ? css`
+          ${slideDown} 3s forwards
+        `
+      : css`
+          ${slideUp} 1.5s forwards
+        `};
+
+  p {
+    margin: 2rem 5rem 2rem 2rem;
+    color: ${(props) => props.theme.mainText};
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    line-height: 1.2rem;
+    animation: ${(props) =>
+      props.isSelected
+        ? css`
+            ${showText} 3s forwards
+          `
+        : css`
+            ${hideText} 1.5s forwards
+          `};
+  }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+const FAQ = styled.li<IStyledFAQ>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,8 +105,27 @@ const FAQ = styled.li`
   color: ${(props) => props.theme.mainText};
   box-shadow: 0 8px 32px 5px ${(props) => props.theme.shadow};
   border-radius: 10px;
-  // border: 1px solid ${(props) => props.theme.mainText};
   font-family: "Roboto", sans-serif;
+  transform: ${(props) => (props.isSelected ? "translateX(30px)" : "")};
+  transition: 1s;
+  cursor: pointer;
+  opacity: ${(props) => (props.isSelected ? "" : "0.25")};
+
+  &:hover {
+    transform: ${(props) => (props.isSelected ? "" : "translateX(15px)")};
+    transition: 1s;
+    opacity: ${(props) => (props.isSelected ? "" : "0.55")};
+  }
+
+  @media (max-width: 768px) {
+    transform: translateX(0);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 32px 1px ${(props) => props.theme.shadow};
+
+    &:hover {
+      transform: translateX(0);
+    }
+  }
 
   div {
     width: 90%;
@@ -53,7 +146,7 @@ const FAQ = styled.li`
     }
 
     h1 {
-      font-weight: 300;
+      font-weight: 400;
       width: 75%;
       @media (max-width: 1350px) {
         font-size: 1rem;

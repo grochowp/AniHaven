@@ -1,19 +1,54 @@
 import React from "react";
 import styled from "styled-components";
 import { PawIcon } from "../../../components/PawIcon";
-import { IFAQ } from "../../../../public/utils";
+import { adoptionQuestions, IFAQ } from "../../../../public/utils";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-export const Answer = ({ question }: { question: IFAQ }) => {
+interface IAnswer {
+  question: IFAQ;
+  selectedQuestionIndex: number;
+  handleChangeQuestion: (index: number) => void;
+}
+
+export const Answer: React.FC<IAnswer> = ({
+  question,
+  selectedQuestionIndex: selectedIndex,
+  handleChangeQuestion,
+}) => {
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  const navigate = useNavigate();
+
   return (
     <AnswerContainer>
       <div className="inner-container">
         <Content>
-          <PawIcon text={question.questionPL} />
-          <p>{question.answerPL}</p>
+          <PawIcon
+            text={
+              currentLanguage == "en"
+                ? question.questionENG
+                : question.questionPL
+            }
+          />
+          <p>
+            {currentLanguage == "en" ? question.answerENG : question.answerPL}
+          </p>
         </Content>
         <Buttons>
-          <button>Poprzednie</button>
-          <button>Nastepne</button>
+          <button
+            style={{ opacity: selectedIndex === 0 ? "0" : "1" }}
+            onClick={() => handleChangeQuestion(selectedIndex - 1)}
+          >
+            Poprzednie
+          </button>
+          {selectedIndex === adoptionQuestions.length - 1 ? (
+            <button onClick={() => navigate("/contact")}>Adoptuj</button>
+          ) : (
+            <button onClick={() => handleChangeQuestion(selectedIndex + 1)}>
+              Nastepne
+            </button>
+          )}
         </Buttons>
       </div>
     </AnswerContainer>
