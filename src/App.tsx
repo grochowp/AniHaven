@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 const Error = lazy(() => import("./components/Error"));
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
-const News = lazy(() => import("./pages/News/News"));
+// const News = lazy(() => import("./pages/News/News"));
 const Animals = lazy(() => import("./pages/Animals/Animals"));
 const Adoption = lazy(() => import("./pages/Adoption/Adoption"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
@@ -73,7 +73,7 @@ function App() {
           <Routes>
             <Route path="*" element={<Error />} />
             <Route index element={<MainPage />} />
-            <Route path="news" element={<News />} />
+            {/* <Route path="news" element={<News />} />  TO-DO   */}
             <Route path="animals" element={<Animals />} />
             <Route path="adoption" element={<Adoption />} />
             <Route path="contact" element={<Contact />} />

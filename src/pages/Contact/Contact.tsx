@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Info } from "./Components/Info";
 import { Map } from "./Components/Map";
 import { Form } from "./Components/Form";
+import { show } from "../../animations/show";
 
 const Contact = () => {
   return (
@@ -19,6 +20,7 @@ const Contact = () => {
 
 export default Contact;
 const Container = styled.article`
+  animation: ${show} 2.5s;
   display: flex;
   justify-content: center;
   flex-direction: row;

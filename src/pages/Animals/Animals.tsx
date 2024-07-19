@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { SelectBar } from "./Components/SelectBar";
 import { CardsContainer } from "./Components/CardsContainer";
 import { SelectBarProvider } from "../../contexts/SelectBarContext";
+import { show } from "../../animations/show";
 
 const Animals = () => {
   return (
@@ -16,6 +17,7 @@ const Animals = () => {
 
 export default Animals;
 const Container = styled.article`
+  animation: ${show} 2.5s;
   display: flex;
   justify-content: center;
   width: 100vw;

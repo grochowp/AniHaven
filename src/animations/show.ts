@@ -1,6 +1,6 @@
 import { keyframes } from "styled-components";
 
-const show = keyframes`
+export const show = keyframes`
    from {
     opacity: 0;
   }
@@ -9,5 +9,3 @@ const show = keyframes`
     opacity: 1;
   }
 `;
-
-export default show;
