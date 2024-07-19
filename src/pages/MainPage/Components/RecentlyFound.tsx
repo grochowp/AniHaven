@@ -25,7 +25,7 @@ export const RecentlyFound = () => {
           <img src={animal.imageLink} alt="animal image" />
           <Link to="/contact">
             <button>
-              Adopt <CiHeart />
+              {t("adopt")} <CiHeart />
             </button>
           </Link>
         </Image>

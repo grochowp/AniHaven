@@ -1,33 +1,32 @@
 import styled from "styled-components";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
 import { IAnimals } from "../../../../public/utils.ts";
+import { memo } from "react";
 
-export const AnimalCard = ({
-  animal,
-  language,
-}: {
-  animal: IAnimals;
-  language: string;
-}) => {
-  return (
-    <Container>
-      <img src={animal.imageLink} alt={animal.name}></img>
-      <div className="header">
-        <h1>{animal.name}</h1>
-        <div>
-          {animal.sex === "Male" ? (
-            <IoIosMale style={{ color: "#0096FF" }} />
-          ) : (
-            <IoIosFemale style={{ color: "#FFC0CB " }} />
-          )}
-          <h2>{language === "en" ? animal.typeENG : animal.typePL}</h2>
+export const AnimalCard = memo(
+  ({ animal, language }: { animal: IAnimals; language: string }) => {
+    return (
+      <Container>
+        <img src={animal.imageLink} alt={animal.name}></img>
+        <div className="header">
+          <h1>{animal.name}</h1>
+          <div>
+            {animal.sex === "Male" ? (
+              <IoIosMale style={{ color: "#0096FF" }} />
+            ) : (
+              <IoIosFemale style={{ color: "#FFC0CB " }} />
+            )}
+            <h2>{language === "en" ? animal.typeENG : animal.typePL}</h2>
+          </div>
         </div>
-      </div>
-      <p>{language === "en" ? animal.descriptionENG : animal.descriptionPL}</p>
-      <span>Adopt me!</span>
-    </Container>
-  );
-};
+        <p>
+          {language === "en" ? animal.descriptionENG : animal.descriptionPL}
+        </p>
+        <span>Adopt me!</span>
+      </Container>
+    );
+  }
+);
 
 const Container = styled.div`
   width: 19rem;

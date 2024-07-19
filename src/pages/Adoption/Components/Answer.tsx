@@ -16,7 +16,7 @@ export const Answer: React.FC<IAnswer> = ({
   selectedQuestionIndex: selectedIndex,
   handleChangeQuestion,
 }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const navigate = useNavigate();
 
@@ -40,13 +40,13 @@ export const Answer: React.FC<IAnswer> = ({
             style={{ opacity: selectedIndex === 0 ? "0" : "1" }}
             onClick={() => handleChangeQuestion(selectedIndex - 1)}
           >
-            Poprzednie
+            {t("previous")}
           </button>
           {selectedIndex === adoptionQuestions.length - 1 ? (
-            <button onClick={() => navigate("/contact")}>Adoptuj</button>
+            <button onClick={() => navigate("/contact")}>{t("adopt")}</button>
           ) : (
             <button onClick={() => handleChangeQuestion(selectedIndex + 1)}>
-              Nastepne
+              {t("next")}
             </button>
           )}
         </Buttons>
