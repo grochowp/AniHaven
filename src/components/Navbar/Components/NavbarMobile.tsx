@@ -5,6 +5,7 @@ import { iThemes } from "../../../reusableInterfaces";
 
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { slideOpen } from "../../../animations/slide";
 
 export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -12,8 +13,8 @@ export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
   const location = useLocation();
   const pathname = location.pathname.split("/")[1];
 
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
   };
   const handleMenuState = () => {
     setIsOpen(!isOpen);
@@ -29,7 +30,11 @@ export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
           <CiMenuBurger onClick={handleMenuState} />
         </div>
         <div className="links">
-          <Link className={pathname === "" ? "selected" : ""} to="/">
+          <Link
+            className={pathname === "" ? "selected" : ""}
+            to="/"
+            onClick={handleMenuState}
+          >
             AniHaven
           </Link>
           {/* <Link className={pathname === "news" ? "selected" : ""} to="/news">
@@ -38,18 +43,21 @@ export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
           <Link
             className={pathname === "animals" ? "selected" : ""}
             to="/animals"
+            onClick={handleMenuState}
           >
             {t("animalButton")}
           </Link>
           <Link
             className={pathname === "adoption" ? "selected" : ""}
             to="/adoption"
+            onClick={handleMenuState}
           >
             {t("adoptionButton")}
           </Link>
           <Link
             className={pathname === "contact" ? "selected" : ""}
             to="/contact"
+            onClick={handleMenuState}
           >
             {t("contactButton")}
           </Link>
@@ -98,6 +106,7 @@ const Navbar = styled.div<INavbar>`
   @media (min-width: 951px) {
     display: none;
   }
+
   .closed-navbar {
     display: ${(props) => (props.isOpen ? "none" : "flex")};
     margin-right: 1rem;
@@ -120,6 +129,8 @@ const Navbar = styled.div<INavbar>`
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
+
+    animation: ${slideOpen} 3s;
 
     .close-button {
       display: flex;
@@ -147,6 +158,8 @@ const Navbar = styled.div<INavbar>`
         color: #d9d9d9;
         cursor: pointer;
         opacity: 0.5;
+        white-space: nowrap;
+        overflow: visible;
       }
 
       .selected {
