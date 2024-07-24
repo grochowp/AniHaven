@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import Navbar from "./components/Navbar/Navbar";
 import { Spinner } from "./components/Spinner";
 import Footer from "./components/Footer";
+import { SelectBarProvider } from "./contexts/SelectBarContext";
 
 const Error = lazy(() => import("./components/Error"));
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
@@ -51,7 +52,7 @@ const DarkTheme: Theme = {
   gold: "#BABE00",
   gradientBackground: "rgb(34,34,34)",
   gradientBackgroundSec:
-    "linear-gradient(0deg, #1B1B1B 0%, rgba(30,30,30,1) 50%)",
+    "linear-gradient(0deg, #1B1B1B 0%, rgba(20,20,20,1) 50%)",
   formBorder: "#00dfc4",
   name: "dark",
 };
@@ -68,18 +69,20 @@ function App() {
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyle />
       <BrowserRouter>
-        <Navbar theme={theme} setTheme={setTheme} />
-        <Suspense fallback={<Spinner />}>
-          <Routes>
-            <Route path="*" element={<Error />} />
-            <Route index element={<MainPage />} />
-            {/* <Route path="news" element={<News />} />  TO-DO   */}
-            <Route path="animals" element={<Animals />} />
-            <Route path="adoption" element={<Adoption />} />
-            <Route path="contact" element={<Contact />} />
-          </Routes>
-        </Suspense>
-        <Footer />
+        <SelectBarProvider>
+          <Navbar theme={theme} setTheme={setTheme} />
+          <Suspense fallback={<Spinner />}>
+            <Routes>
+              <Route path="*" element={<Error />} />
+              <Route index element={<MainPage />} />
+              {/* <Route path="news" element={<News />} />  TO-DO   */}
+              <Route path="animals" element={<Animals />} />
+              <Route path="adoption" element={<Adoption />} />
+              <Route path="contact" element={<Contact />} />
+            </Routes>
+          </Suspense>
+          <Footer />
+        </SelectBarProvider>
       </BrowserRouter>
     </ThemeProvider>
   );

@@ -62,7 +62,6 @@ const AnswerContainer = styled.div`
   align-items: center;
 
   .inner-container {
-    // background-color: ${(props) => props.theme.secondaryBackground};
     width: 80%;
     height: 80%;
     max-height: 45rem;
@@ -70,7 +69,7 @@ const AnswerContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     color: ${(props) => props.theme.mainText};
-    // box-shadow: 0 8px 32px 10px ${(props) => props.theme.shadow};
+
     border-radius: 10px;
     flex-direction: column;
     text-align: center;
@@ -128,9 +127,11 @@ const Buttons = styled.div`
     border-radius: 10px;
     font-size: 1.15rem;
     cursor: pointer;
-    box-shadow: 0 8px 32px 3px ${(props) => props.theme.shadow};
+    box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
+    transition: 1s;
     &:hover {
-      transform: scale(0.95);
+      transform: scale(1.05);
+      background-color: ${(props) => props.theme.shadow};
     }
   }
 

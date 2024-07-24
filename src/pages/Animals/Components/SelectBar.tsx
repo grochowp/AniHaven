@@ -165,7 +165,7 @@ const Container = styled.div`
     width: 70%;
     height: 90%;
     background-color: ${(props) => props.theme.secondaryBackground};
-    box-shadow: 0 8px 32px 10px ${(props) => props.theme.shadow};
+    box-shadow: 1px 1px 16px ${(props) => props.theme.shadow};
     border-radius: 10px;
     color: ${(props) => props.theme.mainText};
     font-family: "Roboto", sans-serif;
@@ -178,13 +178,20 @@ const Container = styled.div`
       position: absolute;
       width: 80%;
       height: 2rem;
-      border: 1px solid red;
+      border: 1px solid #c30010;
+      letter-spacing: 0.1rem;
+      font-size: 1.05rem;
       background: transparent;
-      color: red;
+      color: #c30010;
       border-radius: 5px;
       bottom: 1rem;
       left: 1rem;
       cursor: pointer;
+      transition: 1s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
 
       @media (max-width: 960px) {
         display: none;
@@ -201,7 +208,6 @@ const Container = styled.div`
     transform: translateX(-50%);
 
     margin: -2rem 0 1rem 0;
-    // left: 0;
 
     .inside-container {
       width: 100%;
@@ -224,6 +230,28 @@ const Select = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 0.5rem;
+    gap: 0.25rem;
+
+    input[type="checkbox"]:not(:checked),
+    input[type="checkbox"]:not(:checked) ~ label {
+      opacity: 0.5;
+    }
+
+    input[type="checkbox"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: #f0f0f0;
+      margin: 0;
+      width: 1rem;
+      height: 1rem;
+      border: 0.2rem solid ${(props) => props.theme.mainText};
+      border-radius: 50%;
+      transform: translateY(3px);
+    }
+
+    input[type="checkbox"]:checked {
+      background-color: #212121;
+    }
 
     @media (max-width: 960px) {
       flex-direction: row;
@@ -231,9 +259,15 @@ const Select = styled.div`
       gap: 0.75rem;
       margin-bottom: 0.5rem;
 
+      div {
+        display: flex;
+        gap: 0.25rem;
+      }
+
       label {
         cursor: pointer;
         padding-left: 0rem;
+        transform: translateY(3px);
       }
     }
   }
@@ -247,7 +281,6 @@ const Select = styled.div`
     content: "";
     width: 130px;
     height: 1px;
-    color: red;
     position: absolute;
     top: 2.5rem;
     left: 0rem;

@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import { SelectBar } from "./Components/SelectBar";
 import { CardsContainer } from "./Components/CardsContainer";
-import { SelectBarProvider } from "../../contexts/SelectBarContext";
+
 import { show } from "../../animations/show";
 
 const Animals = () => {
   return (
     <Container>
-      <SelectBarProvider>
-        <SelectBar />
-        <CardsContainer />
-      </SelectBarProvider>
+      <SelectBar />
+      <CardsContainer />
     </Container>
   );
 };

@@ -31,6 +31,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 828px) {
+    display: none;
+  }
 `;
 
 const StyledMapContainer = styled(MapContainer)`
@@ -38,7 +41,7 @@ const StyledMapContainer = styled(MapContainer)`
   max-height: 500px;
   width: 75%;
   z-index: 1;
-  box-shadow: 0 8px 32px 0 ${(props) => props.theme.shadow};
+  // box-shadow: 1px 1px 16px ${(props) => props.theme.shadow};
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme.shadow};
 `;

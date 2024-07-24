@@ -73,28 +73,28 @@ const FormContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 70%;
   height: 100%;
   gap: 2rem;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   padding-bottom: 1rem;
+  transform: translateX(33px);
 
   .inputBox {
     position: relative;
-    width: 100%;
-    transform: translateX(30px);
+    width: 95%;
   }
 
   .inputBox input,
   .inputBox textarea {
-    box-shadow: 0 8px 32px 0 ${(props) => props.theme.shadow};
-    width: 70%;
+    width: 100%;
     height: 2.5rem;
     padding: 10px;
     outline: none;
     color: ${(props) => props.theme.mainText};
-    border: 2px solid ${(props) => props.theme.secondaryBackground};
+    border: 2px solid ${(props) => props.theme.shadow};
     border-radius: 10px;
     background-color: transparent;
 
@@ -112,26 +112,29 @@ const FormContainer = styled.form`
 
   input[type="submit"] {
     width: 30%;
+    min-width: 6rem;
     height: 3rem;
     background-color: transparent;
     color: ${(props) => props.theme.mainText};
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    transform: translateX(clamp(80px, 52.5%, 95px));
     font-size: 1.25rem;
-    box-shadow: 0 8px 32px 3px ${(props) => props.theme.shadow};
     border-radius: 10px;
     border: 1px solid ${(props) => props.theme.shadow};
+    transition: 1s;
+    margin-left: auto;
 
     &:hover {
-      transform: scale(0.95) translateX(clamp(80px, 50.5%, 100px));
+      transform: scale(1.05);
+      background-color: ${(props) => props.theme.shadow};
     }
   }
 
   .inputBox span {
     position: absolute;
     left: 0;
+    top: 2px;
     padding: 20px 15px;
     pointer-events: none;
     color: ${(props) => props.theme.mainText};

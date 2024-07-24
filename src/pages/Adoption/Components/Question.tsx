@@ -66,6 +66,7 @@ const MobileAnswer = styled.div<IStyledFAQ>`
   visibility: ${(props) => (props.isSelected ? "visible" : "hidden")};
   border-radius: 0 0 10px 10px;
   transition: max-height 2s ease-in-out, opacity 2s ease-in-out, visibility 2s;
+
   animation: ${(props) =>
     props.isSelected
       ? css`
@@ -103,7 +104,7 @@ const FAQ = styled.li<IStyledFAQ>`
   background-color: ${(props) => props.theme.secondaryBackground};
   gap: 1rem;
   color: ${(props) => props.theme.mainText};
-  box-shadow: 0 8px 32px 5px ${(props) => props.theme.shadow};
+  box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
   transform: ${(props) => (props.isSelected ? "translateX(30px)" : "")};
@@ -120,7 +121,7 @@ const FAQ = styled.li<IStyledFAQ>`
   @media (max-width: 768px) {
     transform: translateX(0);
     border-radius: 10px 10px 0 0;
-    box-shadow: 0 2px 32px 1px ${(props) => props.theme.shadow};
+    box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
 
     &:hover {
       transform: translateX(0);

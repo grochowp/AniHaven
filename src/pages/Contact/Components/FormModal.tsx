@@ -68,9 +68,10 @@ const Modal = styled.div`
     border: none;
     cursor: pointer;
     width: 30%;
+    transition: 1s;
 
     &:hover {
-      transform: scale(0.95);
+      transform: scale(1.05);
     }
   }
 

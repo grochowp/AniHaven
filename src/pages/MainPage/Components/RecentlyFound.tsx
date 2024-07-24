@@ -100,7 +100,8 @@ const Switch = styled.div`
     transition: 1s;
 
     &:hover {
-      transform: scale(0.95);
+      transform: scale(1.05);
+      background-color: ${(props) => props.theme.shadow};
     }
   }
 `;
@@ -129,7 +130,7 @@ const Image = styled.div`
     background-color: transparent;
     color: ${(props) => props.theme.mainText};
     font-size: clamp(1.25rem, 1.5vw, 1.5rem);
-    box-shadow: -5px 5px 5px ${(props) => props.theme.shadow};
+    box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
 
     cursor: pointer;
     transition: 1s;
@@ -139,8 +140,10 @@ const Image = styled.div`
     svg {
       font-size: 120%;
     }
+
     &:hover {
-      transform: scale(0.95);
+      transform: scale(1.05);
+      background-color: ${(props) => props.theme.shadow};
     }
   }
 
@@ -148,7 +151,7 @@ const Image = styled.div`
     width: clamp(20rem, 40vw, 40rem);
     aspect-ratio: 24/15;
     border-radius: 1rem;
-    box-shadow: 10px 10px 5px ${(props) => props.theme.shadow};
+    box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
 
     @media (max-width: 770px) {
       width: clamp(17.5rem, 80vw, 30rem);

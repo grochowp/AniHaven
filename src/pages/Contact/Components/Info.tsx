@@ -68,7 +68,7 @@ const Container = styled.div`
     text-align: center;
     color: ${(props) => props.theme.mainText};
     transition: 1s;
-    box-shadow: 0 8px 32px 0 ${(props) => props.theme.shadow};
+    box-shadow: 1px 1px 8px ${(props) => props.theme.shadow};
     border-radius: 10px;
     border: 1px solid ${(props) => props.theme.shadow};
     animation: ${jump} 10s linear infinite;

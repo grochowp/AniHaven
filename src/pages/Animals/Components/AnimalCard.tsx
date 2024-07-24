@@ -2,9 +2,15 @@ import styled from "styled-components";
 import { IoIosMale, IoIosFemale } from "react-icons/io";
 import { IAnimals } from "../../../../public/utils.ts";
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { show } from "../../../animations/show.ts";
 
 export const AnimalCard = memo(
   ({ animal, language }: { animal: IAnimals; language: string }) => {
+    const { t } = useTranslation();
+    const navigate = useNavigate();
+
     return (
       <Container>
         <img src={animal.imageLink} alt={animal.name}></img>
@@ -22,7 +28,7 @@ export const AnimalCard = memo(
         <p>
           {language === "en" ? animal.descriptionENG : animal.descriptionPL}
         </p>
-        <span>Adopt me!</span>
+        <span onClick={() => navigate("/contact")}>{t("adopt")}</span>
       </Container>
     );
   }
@@ -33,10 +39,9 @@ const Container = styled.div`
   height: 24rem;
   background-color: ${(props) => props.theme.secondaryBackground};
   color: ${(props) => props.theme.mainText};
-  box-shadow: 0 8px 32px 10px ${(props) => props.theme.shadow};
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
-
+  animation: ${show} 3s;
   img {
     width: 100%;
     height: 12.25rem;
