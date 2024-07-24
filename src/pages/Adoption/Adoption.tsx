@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { adoptionQuestions, IFAQ } from "../../../public/utils";
 import { Question } from "./Components/Question";
 import { Answer } from "./Components/Answer";
-import React, { useState } from "react";
+import { useState } from "react";
 import { show } from "../../animations/show";
+import { motion } from "framer-motion";
 
 const Adoption = () => {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<number>(0);
@@ -17,14 +18,23 @@ const Adoption = () => {
     <Container>
       <ul>
         {adoptionQuestions.map((question: IFAQ, index: number) => (
-          <React.Fragment key={question.questionPL}>
+          <motion.li
+            key={question.questionPL}
+            initial={{
+              opacity: 0,
+              x: -100 * (index + 1),
+            }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5 }}
+          >
             <Question
               question={question}
               index={index}
               selectedQuestionIndex={selectedQuestionIndex}
               handleChangeQuestion={handleChangeQuestion}
             />
-          </React.Fragment>
+          </motion.li>
         ))}
       </ul>
 
@@ -58,6 +68,10 @@ const Container = styled.article`
     padding: 0;
     min-width: 300px;
     width: 40vw;
+
+    li {
+      list-style-type: none;
+    }
 
     @media (max-width: 768px) {
       width: 90vw;

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { useState } from "react";
 import { animalData } from "../../../../public/utils";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const RecentlyFound = () => {
   const [selectedAnimalIndex, setSelectedAnimalIndex] = useState<number>(0);
@@ -16,41 +17,52 @@ export const RecentlyFound = () => {
     if (index < 0 || index > animalData.length - 1) return;
     setSelectedAnimalIndex(index);
   };
+
   return (
     <Content>
       <PawIcon text={t("recentlyFound")} />
 
       <article className="contentContainer">
-        <Image>
-          <img src={animal.imageLink} alt="animal image" />
-          <Link to="/contact">
-            <button>
-              {t("adopt")} <CiHeart />
-            </button>
-          </Link>
-        </Image>
-        <Informations>
-          <div className="info">
-            <h1>{t("name")}</h1>
-            <h2>{animal.name}</h2>
-          </div>
-          <div className="info">
-            <h1>{t("age")}</h1>
-            <h2>{animal.age}</h2>
-          </div>
-          <div className="info">
-            <h1>{t("sex")}</h1>
-            <h2>{currentLanguage == "en" ? animal.sex : animal.sexPL}</h2>
-          </div>
-          <div className="info">
-            <h1>{t("about")}</h1>
-            <h2 className="description">
-              {currentLanguage == "en"
-                ? animal.longDescriptionENG
-                : animal.longDescriptionPL}
-            </h2>
-          </div>
-        </Informations>
+        <AnimatePresence mode="wait">
+          <MotionContainer
+            key={selectedAnimalIndex}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image>
+              <img src={animal.imageLink} alt="animal image" />
+              <Link to="/contact">
+                <button>
+                  {t("adopt")} <CiHeart />
+                </button>
+              </Link>
+            </Image>
+            <Informations>
+              <div className="info">
+                <h1>{t("name")}</h1>
+                <h2>{animal.name}</h2>
+              </div>
+              <div className="info">
+                <h1>{t("age")}</h1>
+                <h2>{animal.age}</h2>
+              </div>
+              <div className="info">
+                <h1>{t("sex")}</h1>
+                <h2>{currentLanguage == "en" ? animal.sex : animal.sexPL}</h2>
+              </div>
+              <div className="info">
+                <h1>{t("about")}</h1>
+                <h2 className="description">
+                  {currentLanguage == "en"
+                    ? animal.longDescriptionENG
+                    : animal.longDescriptionPL}
+                </h2>
+              </div>
+            </Informations>
+          </MotionContainer>
+        </AnimatePresence>
       </article>
       <Switch>
         <button onClick={() => handleChangeAnimal(selectedAnimalIndex - 1)}>
@@ -68,14 +80,14 @@ const Content = styled.section`
   background-color: ${(props) => props.theme.mainBackground};
   transition: 1.5s;
   padding: 5rem 0 2.5rem 0;
+`;
 
-  .contentContainer {
-    display: flex;
-    padding: 2.5rem clamp(1rem, 2.5vw, 5rem);
-    gap: 3rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+const MotionContainer = styled(motion.div)`
+  display: flex;
+  padding: 2.5rem clamp(1rem, 2.5vw, 5rem);
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Switch = styled.div`

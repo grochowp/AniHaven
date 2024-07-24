@@ -13,19 +13,19 @@ export const Stats = () => {
       <article>
         <div className="stat">
           <IoIosPaw style={{ color: "#D96675" }} />
-          <h2>125</h2>
+          <h2>13</h2>
           <p>{t("shelterNumbersWaiting")}</p>
         </div>
         <div className="stat">
           <FaHeartbeat style={{ color: "red" }} />
 
-          <h2>521</h2>
+          <h2>52</h2>
           <p>{t("shelterNumbersRescued")}</p>
         </div>
         <div className="stat">
           <FaHome style={{ color: "#006400" }} />
 
-          <h2>311</h2>
+          <h2>41</h2>
           <p>{t("shelterNumbersFound")}</p>
         </div>
       </article>
@@ -78,7 +78,7 @@ const Content = styled.section`
           position: absolute;
           display: flex;
           top: 68%;
-          transform: translateX(-35px);
+          transform: translateX(-45px);
           height: 1px;
           width: 120px;
           background-color: ${(props) => props.theme.mainText};

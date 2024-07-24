@@ -4,6 +4,7 @@ import { PawIcon } from "../../../components/PawIcon";
 import { adoptionQuestions, IFAQ } from "../../../../public/utils";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface IAnswer {
   question: IFAQ;
@@ -20,6 +21,28 @@ export const Answer: React.FC<IAnswer> = ({
   const currentLanguage = i18n.language;
   const navigate = useNavigate();
 
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 500 : -200,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? 500 : -200,
+      opacity: 0,
+    }),
+  };
+
+  const [direction, setDirection] = React.useState(0);
+
+  const handleChange = (newIndex: number) => {
+    setDirection(newIndex > selectedIndex ? 1 : -1);
+    handleChangeQuestion(newIndex);
+  };
+
   return (
     <AnswerContainer>
       <div className="inner-container">
@@ -31,21 +54,32 @@ export const Answer: React.FC<IAnswer> = ({
                 : question.questionPL
             }
           />
-          <p>
+          <motion.p
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={variants}
+            custom={direction}
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+            }}
+            key={selectedIndex}
+          >
             {currentLanguage == "en" ? question.answerENG : question.answerPL}
-          </p>
+          </motion.p>
         </Content>
         <Buttons>
           <button
             style={{ opacity: selectedIndex === 0 ? "0" : "1" }}
-            onClick={() => handleChangeQuestion(selectedIndex - 1)}
+            onClick={() => handleChange(selectedIndex - 1)}
           >
             {t("previous")}
           </button>
           {selectedIndex === adoptionQuestions.length - 1 ? (
             <button onClick={() => navigate("/contact")}>{t("adopt")}</button>
           ) : (
-            <button onClick={() => handleChangeQuestion(selectedIndex + 1)}>
+            <button onClick={() => handleChange(selectedIndex + 1)}>
               {t("next")}
             </button>
           )}

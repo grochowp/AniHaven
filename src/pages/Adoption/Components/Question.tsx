@@ -97,7 +97,7 @@ const MobileAnswer = styled.div<IStyledFAQ>`
   }
 `;
 
-const FAQ = styled.li<IStyledFAQ>`
+const FAQ = styled.div<IStyledFAQ>`
   display: flex;
   align-items: center;
   justify-content: space-between;

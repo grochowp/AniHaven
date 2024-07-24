@@ -1,67 +1,115 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CiMenuBurger } from "react-icons/ci";
 import { iThemes } from "../../../reusableInterfaces";
 
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { slideOpen } from "../../../animations/slide";
+import { stagger, useAnimate } from "framer-motion";
+import { IoMdClose } from "react-icons/io";
+
+function useMenuAnimation(isOpen: boolean) {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    const menuAnimations = isOpen
+      ? [
+          [
+            "nav",
+            { transform: "translateX(0%)" },
+            { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.6 },
+          ],
+          [
+            "li",
+            { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
+            { delay: stagger(0.05), at: "-0.1" },
+          ],
+        ]
+      : [
+          [
+            "li",
+            { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
+            { delay: stagger(0.05, { from: "last" }), at: "<" },
+          ],
+          ["nav", { transform: "translateX(100%)" }, { at: "-0.1" }],
+        ];
+
+    animate([
+      [
+        "path.top",
+        { d: isOpen ? "M 3 16.5 L 17 2.5" : "M 2 2.5 L 20 2.5" },
+        { at: "<" },
+      ],
+      ["path.middle", { opacity: isOpen ? 0 : 1 }, { at: "<" }],
+      [
+        "path.bottom",
+        { d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" },
+        { at: "<" },
+      ],
+      // @ts-expect-error wrong types, but it`s from 3rd party library, can`t do much about it
+      ...menuAnimations,
+    ]);
+  }, [isOpen, animate]);
+
+  return scope;
+}
 
 export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const pathname = location.pathname.split("/")[1];
+  const navigate = useNavigate();
+
+  const scope = useMenuAnimation(isOpen);
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
   };
-  const handleMenuState = () => {
+
+  const handleMenuState = (link: string) => {
+    navigate(link);
     setIsOpen(!isOpen);
   };
 
   return (
-    <Navbar isOpen={isOpen}>
+    <Navbar isOpen={isOpen} ref={scope}>
       <div className="closed-navbar">
-        <CiMenuBurger onClick={handleMenuState} />
+        <CiMenuBurger onClick={() => setIsOpen(!isOpen)} />
       </div>
-      <div className="open-navbar">
+      <nav className="open-navbar">
         <div className="close-button">
-          <CiMenuBurger onClick={handleMenuState} />
+          <IoMdClose onClick={() => setIsOpen(!isOpen)} />
         </div>
-        <div className="links">
-          <Link
+        <ul className="links">
+          <li
             className={pathname === "" ? "selected" : ""}
-            to="/"
-            onClick={handleMenuState}
+            onClick={() => handleMenuState("/")}
           >
             AniHaven
-          </Link>
+          </li>
           {/* <Link className={pathname === "news" ? "selected" : ""} to="/news">
             {t("newsButton")}
           </Link>  TO-DO  */}
-          <Link
+          <li
             className={pathname === "animals" ? "selected" : ""}
-            to="/animals"
-            onClick={handleMenuState}
+            onClick={() => handleMenuState("/animals")}
           >
             {t("animalButton")}
-          </Link>
-          <Link
+          </li>
+          <li
             className={pathname === "adoption" ? "selected" : ""}
-            to="/adoption"
-            onClick={handleMenuState}
+            onClick={() => handleMenuState("/adoption")}
           >
             {t("adoptionButton")}
-          </Link>
-          <Link
+          </li>
+          <li
             className={pathname === "contact" ? "selected" : ""}
-            to="/contact"
-            onClick={handleMenuState}
+            onClick={() => handleMenuState("/contact")}
           >
             {t("contactButton")}
-          </Link>
-        </div>
+          </li>
+        </ul>
         <div className="app-state">
           <div className="lang">
             <img
@@ -93,7 +141,7 @@ export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
             />
           </div>
         </div>
-      </div>
+      </nav>
     </Navbar>
   );
 };
@@ -108,7 +156,6 @@ const Navbar = styled.div<INavbar>`
   }
 
   .closed-navbar {
-    display: ${(props) => (props.isOpen ? "none" : "flex")};
     margin-right: 1rem;
     cursor: pointer;
     svg {
@@ -118,7 +165,7 @@ const Navbar = styled.div<INavbar>`
   }
 
   .open-navbar {
-    display: ${(props) => (props.isOpen ? "flex" : "none")};
+    display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -129,8 +176,6 @@ const Navbar = styled.div<INavbar>`
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-
-    animation: ${slideOpen} 3s;
 
     .close-button {
       display: flex;
@@ -152,7 +197,7 @@ const Navbar = styled.div<INavbar>`
       font-size: 1.75rem;
       width: 100%;
 
-      a {
+      li {
         margin-left: 3rem;
         text-decoration: none;
         color: #d9d9d9;
@@ -160,6 +205,7 @@ const Navbar = styled.div<INavbar>`
         opacity: 0.5;
         white-space: nowrap;
         overflow: visible;
+        list-style-type: none;
       }
 
       .selected {

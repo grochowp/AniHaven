@@ -1,6 +1,30 @@
 import styled from "styled-components";
 import { PawIcon } from "../../../components/PawIcon";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+
+const Paragraph = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className: string;
+}) => {
+  return (
+    <motion.div
+      className={className}
+      initial={{
+        opacity: 0,
+        x: className.includes("left-icon") ? -200 : 200,
+      }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export const BehaviouristCorner = () => {
   const { t } = useTranslation();
@@ -9,30 +33,30 @@ export const BehaviouristCorner = () => {
     <Content>
       <PawIcon text={t("behaviouristCorner")} special="gold" />
       <article>
-        <div className="paragraph left-icon">
+        <Paragraph className="paragraph left-icon">
           <div>
             <img src="/images/dogIcon.png" alt="dog logo" />
           </div>
           <p>{t("dogTip1")}</p>
-        </div>
-        <div className="paragraph right-icon">
+        </Paragraph>
+        <Paragraph className="paragraph right-icon">
           <p>{t("catTip1")}</p>
           <div>
             <img src="/images/catIcon.png" alt="cat logo" />
           </div>
-        </div>
-        <div className="paragraph left-icon">
+        </Paragraph>
+        <Paragraph className="paragraph left-icon">
           <div>
             <img src="/images/dogIcon.png" alt="dog logo" />
           </div>
           <p>{t("dogTip2")}</p>
-        </div>
-        <div className="paragraph right-icon">
+        </Paragraph>
+        <Paragraph className="paragraph right-icon">
           <p>{t("catTip2")}</p>
           <div>
             <img src="/images/catIcon.png" alt="cat logo" />
           </div>
-        </div>
+        </Paragraph>
       </article>
     </Content>
   );
