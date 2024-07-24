@@ -4,6 +4,7 @@ import { IAnimals, animalData } from "../../../../public/utils.ts";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { useSelectBar } from "../../../contexts/SelectBarContext.tsx";
+import { motion } from "framer-motion";
 
 export const CardsContainer = () => {
   const { i18n } = useTranslation();
@@ -33,15 +34,43 @@ export const CardsContainer = () => {
   }, [type, age, sex]);
 
   return (
-    <Container>
+    <MotionContainer
+      className="container"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {animalDataFiltered.map((animal: IAnimals) => (
-        <AnimalCard animal={animal} language={currentLanguage} />
+        <MotionAnimalCard
+          key={animal.name}
+          className="item"
+          variants={itemVariants}
+        >
+          <AnimalCard animal={animal} language={currentLanguage} />
+        </MotionAnimalCard>
       ))}
-    </Container>
+    </MotionContainer>
   );
 };
 
-const Container = styled.div`
+const containerVariants = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+};
+
+const MotionContainer = styled(motion.div)`
   width: calc(100vw - 15rem);
   display: flex;
   justify-content: center;
@@ -56,3 +85,4 @@ const Container = styled.div`
     padding: 4rem 0 3rem 0;
   }
 `;
+const MotionAnimalCard = styled(motion.div)``;
