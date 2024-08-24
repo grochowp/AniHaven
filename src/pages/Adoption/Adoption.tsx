@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 const Adoption = () => {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<number>(0);
+  const mediaQuery = window.matchMedia("(min-width: 768px)");
 
   const handleChangeQuestion = (index: number) => {
     if (index < 0 || index > adoptionQuestions.length - 1) return;
@@ -22,11 +23,11 @@ const Adoption = () => {
             key={question.questionPL}
             initial={{
               opacity: 0,
-              x: -100 * (index + 1),
+              x: mediaQuery.matches ? -50 * (index + 1) : 0,
             }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 2 }}
           >
             <Question
               question={question}

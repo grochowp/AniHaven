@@ -29,7 +29,7 @@ export const Question: React.FC<IQuestion> = ({
     <div style={{ display: "flex", flexDirection: "column" }}>
       <FAQ
         onClick={() => handleChangeQuestion(index)}
-        isSelected={index === selectedIndex}
+        selected={index === selectedIndex}
       >
         <div>
           <span>{index + 1}</span>
@@ -43,7 +43,7 @@ export const Question: React.FC<IQuestion> = ({
           <IoIosArrowForward />
         </button>
       </FAQ>
-      <MobileAnswer isSelected={index === selectedIndex}>
+      <MobileAnswer selected={index === selectedIndex}>
         <p>
           {currentLanguage === "en" ? question.answerENG : question.answerPL}
         </p>
@@ -53,7 +53,7 @@ export const Question: React.FC<IQuestion> = ({
 };
 
 interface IStyledFAQ {
-  isSelected: boolean;
+  selected: boolean;
 }
 
 const MobileAnswer = styled.div<IStyledFAQ>`
@@ -61,14 +61,14 @@ const MobileAnswer = styled.div<IStyledFAQ>`
   align-items: center;
   z-index: 0;
   overflow: hidden;
-  max-height: ${(props) => (props.isSelected ? "1000px" : "0")};
-  opacity: ${(props) => (props.isSelected ? "1" : "0")};
-  visibility: ${(props) => (props.isSelected ? "visible" : "hidden")};
+  max-height: ${(props) => (props.selected ? "1000px" : "0")};
+  opacity: ${(props) => (props.selected ? "1" : "0")};
+  visibility: ${(props) => (props.selected ? "visible" : "hidden")};
   border-radius: 0 0 10px 10px;
   transition: max-height 2s ease-in-out, opacity 2s ease-in-out, visibility 2s;
 
   animation: ${(props) =>
-    props.isSelected
+    props.selected
       ? css`
           ${slideDown} 3s forwards
         `
@@ -83,7 +83,7 @@ const MobileAnswer = styled.div<IStyledFAQ>`
     font-weight: 300;
     line-height: 1.2rem;
     animation: ${(props) =>
-      props.isSelected
+      props.selected
         ? css`
             ${showText} 3s forwards
           `
@@ -107,15 +107,15 @@ const FAQ = styled.div<IStyledFAQ>`
   box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
-  transform: ${(props) => (props.isSelected ? "translateX(30px)" : "")};
+  transform: ${(props) => (props.selected ? "translateX(30px)" : "")};
   transition: 1s;
   cursor: pointer;
-  opacity: ${(props) => (props.isSelected ? "" : "0.25")};
+  opacity: ${(props) => (props.selected ? "" : "0.25")};
 
   &:hover {
-    transform: ${(props) => (props.isSelected ? "" : "translateX(15px)")};
+    transform: ${(props) => (props.selected ? "" : "translateX(15px)")};
     transition: 1s;
-    opacity: ${(props) => (props.isSelected ? "" : "0.55")};
+    opacity: ${(props) => (props.selected ? "" : "0.55")};
   }
 
   @media (max-width: 768px) {

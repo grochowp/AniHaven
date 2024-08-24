@@ -15,9 +15,8 @@ const Paragraph = ({
       className={className}
       initial={{
         opacity: 0,
-        x: className.includes("left-icon") ? -200 : 200,
       }}
-      whileInView={{ opacity: 1, x: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1 }}
     >

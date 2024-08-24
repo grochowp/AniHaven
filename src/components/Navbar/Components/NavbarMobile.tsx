@@ -73,7 +73,7 @@ export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
   };
 
   return (
-    <Navbar isOpen={isOpen} ref={scope}>
+    <Navbar ref={scope}>
       <div className="closed-navbar">
         <CiMenuBurger onClick={() => setIsOpen(!isOpen)} />
       </div>
@@ -146,11 +146,7 @@ export const NavbarMobile: React.FC<iThemes> = ({ theme, setTheme }) => {
   );
 };
 
-interface INavbar {
-  isOpen: boolean;
-}
-
-const Navbar = styled.div<INavbar>`
+const Navbar = styled.div`
   @media (min-width: 951px) {
     display: none;
   }
