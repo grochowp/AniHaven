@@ -9,13 +9,35 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export const RecentlyFound = () => {
   const [selectedAnimalIndex, setSelectedAnimalIndex] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(1);
   const animal = animalData[selectedAnimalIndex];
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
 
-  const handleChangeAnimal = (index: number) => {
-    if (index < 0 || index > animalData.length - 1) return;
-    setSelectedAnimalIndex(index);
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 500 : -200,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? 500 : -200,
+      opacity: 0,
+    }),
+  };
+
+  const handleChange = (newIndex: number) => {
+    if (newIndex < 0 || newIndex > animalData.length - 1) return;
+
+    const newDirection = newIndex > selectedAnimalIndex ? 1 : -1;
+    setDirection(newDirection);
+
+    setTimeout(() => {
+      setSelectedAnimalIndex(newIndex);
+    }, 10);
   };
 
   return (
@@ -26,10 +48,15 @@ export const RecentlyFound = () => {
         <AnimatePresence mode="wait">
           <MotionContainer
             key={selectedAnimalIndex}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5 }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={variants}
+            custom={direction}
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+            }}
           >
             <Image>
               <img src={animal.imageLink} alt="animal image" />
@@ -65,10 +92,10 @@ export const RecentlyFound = () => {
         </AnimatePresence>
       </article>
       <Switch>
-        <button onClick={() => handleChangeAnimal(selectedAnimalIndex - 1)}>
+        <button onClick={() => handleChange(selectedAnimalIndex - 1)}>
           {"<"}
         </button>
-        <button onClick={() => handleChangeAnimal(selectedAnimalIndex + 1)}>
+        <button onClick={() => handleChange(selectedAnimalIndex + 1)}>
           {">"}
         </button>
       </Switch>
@@ -101,10 +128,10 @@ const Switch = styled.div`
   transition: 1s;
 
   button {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: transparent;
     border: 1px solid ${(props) => props.theme.mainText};
     color: ${(props) => props.theme.mainText};
@@ -142,8 +169,7 @@ const Image = styled.div`
     background-color: transparent;
     color: ${(props) => props.theme.mainText};
     font-size: clamp(1.25rem, 1.5vw, 1.5rem);
-    box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
-
+    box-shadow: 4px 4px 8px ${(props) => props.theme.secondaryBackground};
     cursor: pointer;
     transition: 1s;
 
@@ -163,8 +189,7 @@ const Image = styled.div`
     width: clamp(20rem, 40vw, 40rem);
     aspect-ratio: 24/15;
     border-radius: 1rem;
-    box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
-
+    box-shadow: 4px 4px 8px ${(props) => props.theme.secondaryBackground};
     @media (max-width: 770px) {
       width: clamp(17.5rem, 80vw, 30rem);
     }
@@ -197,12 +222,12 @@ const Informations = styled.div`
       width: clamp(5rem, 12vw, 12rem);
 
       height: 5rem;
-      font: 400 normal clamp(1.25rem, 2vw, 2rem) "Inika";
+      font: 400 normal clamp(1.25rem, 2vw, 2rem) "Roboto";
       margin: 0;
     }
 
     h2 {
-      font: 400 normal clamp(1.35rem, 1.5vw, 1.5rem) "Inika";
+      font: 400 normal clamp(1.35rem, 1.5vw, 1.5rem) "Roboto";
       margin: 0;
       transform: translateY(7px);
       @media (max-width: 770px) {
@@ -212,7 +237,7 @@ const Informations = styled.div`
 
     .description {
       width: clamp(10rem, 30vw, 30rem);
-      font: 300 normal clamp(0.75rem, 1vw, 1rem) "Karla", "sans-serif";
+      font: 300 normal clamp(0.75rem, 1vw, 1rem) "Roboto", "sans-serif";
       margin: 0;
       transform: translateY(10px);
       flex-wrap: wrap;
