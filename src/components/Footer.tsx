@@ -63,8 +63,8 @@ const FooterBar = styled.footer`
 const Rights = styled.p`
   height: 1rem;
   margin: 0;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
   padding: 1rem;
   color: ${(props) => props.theme.mainText};
   transition: 1s;

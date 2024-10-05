@@ -28,7 +28,7 @@ const Container = styled.article`
   align-items: center;
   background-color: ${(props) => props.theme.mainBackground};
   color: ${(props) => props.theme.mainText};
-  font: 400 normal 3rem "Inder";
+  font: 400 normal 3rem "Roboto";
 
   button {
     font-size: 2rem;

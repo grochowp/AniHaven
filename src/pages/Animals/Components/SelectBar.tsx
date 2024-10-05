@@ -165,7 +165,7 @@ const Container = styled.div`
     width: 70%;
     height: 90%;
     background-color: ${(props) => props.theme.secondaryBackground};
-    box-shadow: 1px 1px 16px ${(props) => props.theme.shadow};
+    box-shadow: 4px 4px 8px ${(props) => props.theme.secondaryBackground};
     border-radius: 10px;
     color: ${(props) => props.theme.mainText};
     font-family: "Roboto", sans-serif;

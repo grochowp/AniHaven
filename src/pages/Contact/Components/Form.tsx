@@ -111,13 +111,10 @@ const FormContainer = styled.form`
   }
 
   input[type="submit"] {
-    width: 30%;
-    min-width: 6rem;
+    padding: 0 3rem;
     height: 3rem;
     background-color: transparent;
     color: ${(props) => props.theme.mainText};
-    border-radius: 10px;
-    border: none;
     cursor: pointer;
     font-size: 1.25rem;
     border-radius: 10px;
@@ -126,7 +123,6 @@ const FormContainer = styled.form`
     margin-left: auto;
 
     &:hover {
-      transform: scale(1.05);
       background-color: ${(props) => props.theme.shadow};
     }
   }

@@ -68,7 +68,7 @@ const Container = styled.div`
     text-align: center;
     color: ${(props) => props.theme.mainText};
     transition: 1s;
-    box-shadow: 1px 1px 8px ${(props) => props.theme.shadow};
+    box-shadow: 4px 4px 8px ${(props) => props.theme.secondaryBackground};
     border-radius: 10px;
     border: 1px solid ${(props) => props.theme.shadow};
     animation: ${jump} 10s linear infinite;
@@ -82,14 +82,14 @@ const Container = styled.div`
 
     h1 {
       height: 50px;
-      font: 100 normal 1.25rem "Istok web", "sans-serif";
+      font: 100 normal 1.25rem "Roboto", "sans-serif";
     }
 
     h2 {
       height: 50px;
       display: flex;
       align-items: center;
-      font: 100 normal 1rem "Istok web", "sans-serif";
+      font: 100 normal 1rem "Roboto", "sans-serif";
       margin-top: 0;
     }
   }

@@ -45,14 +45,14 @@ const LightTheme: Theme = {
 
 const DarkTheme: Theme = {
   mainBackground: "#1B1B1B",
-  secondaryBackground: "#171717",
+  secondaryBackground: "#151515",
   shadow: "#28282B",
   mainText: "#D9D9D9",
   secondaryText: "#D9D9D9",
   gold: "#BABE00",
   gradientBackground: "rgb(34,34,34)",
   gradientBackgroundSec:
-    "linear-gradient(0deg, #1B1B1B 0%, rgba(20,20,20,1) 50%)",
+    "linear-gradient(0deg, #1B1B1B 0%, rgba(20,20,20,1) 100%)",
   formBorder: "#00dfc4",
   name: "dark",
 };

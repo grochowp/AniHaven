@@ -161,7 +161,7 @@ const Buttons = styled.div`
     border-radius: 10px;
     font-size: 1.15rem;
     cursor: pointer;
-    box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
+    box-shadow: 4px 4px 8px ${(props) => props.theme.secondaryBackground};
     transition: 1s;
     &:hover {
       transform: scale(1.05);

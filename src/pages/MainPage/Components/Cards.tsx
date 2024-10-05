@@ -75,7 +75,7 @@ const Content = styled.div`
     gap: 0.5rem;
 
     div {
-      box-shadow: 0 4px 16px 1px ${(props) => props.theme.shadow};
+      box-shadow: 4px 4px 8px ${(props) => props.theme.secondaryBackground};
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -101,7 +101,7 @@ const Content = styled.div`
       }
 
       h2 {
-        font: 400 normal clamp(0.85rem, 1.5vw, 1.5rem) "Inder", sans-serif;
+        font: 400 normal clamp(0.85rem, 1.5vw, 1.5rem) "Roboto", sans-serif;
       }
     }
   }

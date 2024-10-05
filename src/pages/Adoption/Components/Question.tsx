@@ -104,7 +104,7 @@ const FAQ = styled.div<IStyledFAQ>`
   background-color: ${(props) => props.theme.secondaryBackground};
   gap: 1rem;
   color: ${(props) => props.theme.mainText};
-  box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
+  box-shadow: 4px 4px 8px ${(props) => props.theme.secondaryBackground};
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
   transform: ${(props) => (props.selected ? "translateX(30px)" : "")};
@@ -121,8 +121,7 @@ const FAQ = styled.div<IStyledFAQ>`
   @media (max-width: 768px) {
     transform: translateX(0);
     border-radius: 10px 10px 0 0;
-    box-shadow: 2px 2px 16px ${(props) => props.theme.shadow};
-
+    box-shadow: 4px 4px 8px ${(props) => props.theme.secondaryBackground};
     &:hover {
       transform: translateX(0);
     }

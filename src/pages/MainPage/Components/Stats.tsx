@@ -86,7 +86,7 @@ const Content = styled.section`
       }
 
       p {
-        font: 400 normal 1.25rem "Inder";
+        font: 400 normal 1.25rem "Roboto";
       }
     }
     @media (max-width: 640px) {

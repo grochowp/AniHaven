@@ -31,7 +31,7 @@ const Container = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font: 400 normal 1rem "Inika", sans-serif;
+  font: 400 normal 1rem "Roboto", sans-serif;
   color: ${(props) => props.theme.mainText};
   z-index: 3;
   transition: 1s;

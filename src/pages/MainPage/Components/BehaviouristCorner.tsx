@@ -85,7 +85,7 @@ const Content = styled.section`
   .paragraph p {
     width: 65%;
     min-width: 300px;
-    font: 400 normal 1.15rem "Inika";
+    font: 400 normal 1.15rem "Roboto";
     color: #D9D9D9;
   }
 

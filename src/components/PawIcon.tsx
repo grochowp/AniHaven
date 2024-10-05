@@ -33,7 +33,7 @@ const Container = styled.div`
 
   h1 {
     margin: 0.5rem 0 1rem 0;
-    font: 400 normal clamp(1.5rem, 2vw, 2rem) "Inder", sans-serif;
+    font: 400 normal clamp(1.5rem, 2vw, 2rem) "Roboto", sans-serif;
   }
 
   &.gold {
